@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - ert_main.c </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/ert_main.c" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/ert_main.c</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: ert_main.c
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Real-Time Workshop code generated for Simulink model FFT.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Model version                        : 1.3
+<SPAN class="LineNumber">    7   </SPAN> * Real-Time Workshop file version      : 6.5  (R2006b Beta)  21-Sep-2006
+<SPAN class="LineNumber">    8   </SPAN> * Real-Time Workshop file generated on : Wed Oct  8 13:32:53 2008
+<SPAN class="LineNumber">    9   </SPAN> * TLC version                          : 6.5 (Sep 20 2006)
+<SPAN class="LineNumber">   10   </SPAN> * C source code generated on           : Wed Oct  8 13:32:54 2008
+<SPAN class="LineNumber">   11   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;stdio.h&gt;</FONT>                     <SPAN class="Comment">/* This ert_main.c example uses printf/fflush */</SPAN>
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;FFT.h&quot;</FONT>                       <SPAN class="Comment">/* Model's header file */</SPAN>
+<SPAN class="LineNumber">   14   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;rtwtypes.h&quot;</FONT>                  <SPAN class="Comment">/* MathWorks types */</SPAN>
+<SPAN class="LineNumber">   15   </SPAN>
+<SPAN class="LineNumber">   16   </SPAN><SPAN class="Datatype">static</SPAN> <A HREF=rtwtypes_h.html#type_boolean_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">boolean_T</FONT></A> <A NAME=var_OverrunFlag>OverrunFlag</A> = 0;
+<SPAN class="LineNumber">   17   </SPAN>
+<SPAN class="LineNumber">   18   </SPAN><SPAN class="Comment">/* Associating rt_OneStep with a real-time clock or interrupt service routine
+<SPAN class="LineNumber">   19   </SPAN> * is what makes the generated code &quot;real-time&quot;.  The function rt_OneStep is
+<SPAN class="LineNumber">   20   </SPAN> * always associated with the base rate of the model.  Subrates are managed
+<SPAN class="LineNumber">   21   </SPAN> * by the base rate from inside the generated code.  Enabling/disabling
+<SPAN class="LineNumber">   22   </SPAN> * interrupts and floating point context switches are target specific.  This
+<SPAN class="LineNumber">   23   </SPAN> * example code indicates where these should take place relative to executing
+<SPAN class="LineNumber">   24   </SPAN> * the generated code step function.  Overrun behavior should be tailored to
+<SPAN class="LineNumber">   25   </SPAN> * your application needs.  This example simply sets an error status in the
+<SPAN class="LineNumber">   26   </SPAN> * real-time model and returns from rt_OneStep.
+<SPAN class="LineNumber">   27   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   28   </SPAN><SPAN class="Datatype">void</SPAN> <A NAME=fcn_rt_OneStep>rt_OneStep</A>(<SPAN class="Datatype">void</SPAN>)
+<SPAN class="LineNumber">   29   </SPAN><B>{</B>
+<SPAN class="LineNumber">   30   </SPAN>  <SPAN class="Comment">/* Disable interrupts here */</SPAN>
+<SPAN class="LineNumber">   31   </SPAN>
+<SPAN class="LineNumber">   32   </SPAN>  <SPAN class="Comment">/* Check for overrun */</SPAN>
+<SPAN class="LineNumber">   33   </SPAN>  <SPAN class="Keyword">if</SPAN> (<A HREF=ert_main_c.html#var_OverrunFlag TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">OverrunFlag</FONT></A>++) <B>{</B>
+<SPAN class="LineNumber">   34   </SPAN>    rtmSetErrorStatus(FFT_M, <FONT COLOR=#1122ff>&quot;Overrun&quot;</FONT>);
+<SPAN class="LineNumber">   35   </SPAN>    <SPAN class="Keyword">return</SPAN>;
+<SPAN class="LineNumber">   36   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   37   </SPAN>
+<SPAN class="LineNumber">   38   </SPAN>  <SPAN class="Comment">/* Save FPU context here (if necessary) */</SPAN>
+<SPAN class="LineNumber">   39   </SPAN>  <SPAN class="Comment">/* Re-enable timer or interrupt here */</SPAN>
+<SPAN class="LineNumber">   40   </SPAN>  <SPAN class="Comment">/* Set model inputs here */</SPAN>
+<SPAN class="LineNumber">   41   </SPAN>  <A HREF=FFT_c.html#fcn_FFT_step TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_step</FONT></A>();
+<SPAN class="LineNumber">   42   </SPAN>
+<SPAN class="LineNumber">   43   </SPAN>  <SPAN class="Comment">/* Get model outputs here */</SPAN>
+<SPAN class="LineNumber">   44   </SPAN>  <A HREF=ert_main_c.html#var_OverrunFlag TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">OverrunFlag</FONT></A>--;
+<SPAN class="LineNumber">   45   </SPAN>
+<SPAN class="LineNumber">   46   </SPAN>  <SPAN class="Comment">/* Disable interrupts here */</SPAN>
+<SPAN class="LineNumber">   47   </SPAN>  <SPAN class="Comment">/* Restore FPU context here (if necessary) */</SPAN>
+<SPAN class="LineNumber">   48   </SPAN>  <SPAN class="Comment">/* Enable interrupts here */</SPAN>
+<SPAN class="LineNumber">   49   </SPAN><B>}</B>
+<SPAN class="LineNumber">   50   </SPAN>
+<SPAN class="LineNumber">   51   </SPAN><SPAN class="Comment">/* The example &quot;main&quot; function illustrates what is required by your
+<SPAN class="LineNumber">   52   </SPAN> * application code to initialize, execute, and terminate the generated code.
+<SPAN class="LineNumber">   53   </SPAN> * Attaching rt_OneStep to a real-time clock is target specific.  This example
+<SPAN class="LineNumber">   54   </SPAN> * illustates how you do this relative to initializing the model.
+<SPAN class="LineNumber">   55   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   56   </SPAN><A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> <A NAME=fcn_main>main</A>(<A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> argc, <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> *argv[])
+<SPAN class="LineNumber">   57   </SPAN><B>{</B>
+<SPAN class="LineNumber">   58   </SPAN>  <SPAN class="Comment">/* Initialize model */</SPAN>
+<SPAN class="LineNumber">   59   </SPAN>  <A HREF=FFT_c.html#fcn_FFT_initialize TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_initialize</FONT></A>();
+<SPAN class="LineNumber">   60   </SPAN>
+<SPAN class="LineNumber">   61   </SPAN>  <SPAN class="Comment">/* Attach rt_OneStep to a timer or interrupt service routine with
+<SPAN class="LineNumber">   62   </SPAN>   * period 0.2 seconds (the model's base sample time) here.  The
+<SPAN class="LineNumber">   63   </SPAN>   * call syntax for rt_OneStep is
+<SPAN class="LineNumber">   64   </SPAN>   *
+<SPAN class="LineNumber">   65   </SPAN>   * rt_OneStep();
+<SPAN class="LineNumber">   66   </SPAN>   */</SPAN>
+<SPAN class="LineNumber">   67   </SPAN>  printf(<FONT COLOR=#1122ff>&quot;Warning: The simulation will run forever. &quot;</FONT>
+<SPAN class="LineNumber">   68   </SPAN>         <FONT COLOR=#1122ff>&quot;Generated ERT main won't simulate model step behavior. &quot;</FONT>
+<SPAN class="LineNumber">   69   </SPAN>         <FONT COLOR=#1122ff>&quot;To change this behavior select the 'MAT-file logging' option.\n&quot;</FONT>);
+<SPAN class="LineNumber">   70   </SPAN>  fflush(NULL);
+<SPAN class="LineNumber">   71   </SPAN>  <SPAN class="Keyword">while</SPAN> (rtmGetErrorStatus(FFT_M) == NULL) <B>{</B>
+<SPAN class="LineNumber">   72   </SPAN>    <SPAN class="Comment">/*  Perform other application tasks here */</SPAN>
+<SPAN class="LineNumber">   73   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   74   </SPAN>
+<SPAN class="LineNumber">   75   </SPAN>  <SPAN class="Comment">/* Disable rt_OneStep() here */</SPAN>
+<SPAN class="LineNumber">   76   </SPAN>
+<SPAN class="LineNumber">   77   </SPAN>  <SPAN class="Comment">/* Terminate model */</SPAN>
+<SPAN class="LineNumber">   78   </SPAN>  <A HREF=FFT_c.html#fcn_FFT_terminate TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_terminate</FONT></A>();
+<SPAN class="LineNumber">   79   </SPAN>  <SPAN class="Keyword">return</SPAN> 0;
+<SPAN class="LineNumber">   80   </SPAN><B>}</B>
+<SPAN class="LineNumber">   81   </SPAN>
+<SPAN class="LineNumber">   82   </SPAN><SPAN class="Comment">/* File trailer for Real-Time Workshop generated code.
+<SPAN class="LineNumber">   83   </SPAN> *
+<SPAN class="LineNumber">   84   </SPAN> * [EOF]
+<SPAN class="LineNumber">   85   </SPAN> */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>

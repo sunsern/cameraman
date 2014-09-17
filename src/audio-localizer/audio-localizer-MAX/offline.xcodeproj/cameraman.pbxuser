@@ -1,0 +1,182 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Development;
+		activeExecutable = 2FA40C2A0E2C15A10083D044 /* offline_exec */;
+		activeTarget = 8D01CCC60486CAD60068D4B7 /* offline */;
+		addToTargets = (
+			8D01CCC60486CAD60068D4B7 /* offline */,
+		);
+		breakpoints = (
+			2FC4E6EC0E1D8D5A00DBC279 /* motu.c:203 */,
+		);
+		codeSenseManager = 2F2324F90DEDF8C600ED3737 /* Code sense */;
+		executables = (
+			2FA40C2A0E2C15A10083D044 /* offline_exec */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					57.58349609375,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					161,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					121,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 237767438;
+			PBXWorkspaceStateSaveDate = 237767438;
+		};
+		sourceControlManager = 2F2324F80DEDF8C600ED3737 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2F1180F80E1AC9F1006731FA /* motu.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1013, 3416}}";
+			sepNavSelRange = "{6443, 0}";
+			sepNavVisRange = "{6413, 477}";
+			sepNavWindowFrame = "{{15, 0}, {1006, 746}}";
+		};
+	};
+	2F2324F80DEDF8C600ED3737 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	2F2324F90DEDF8C600ED3737 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2FA40BBB0E2C0B1D0083D044 /* offline.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1460, 4592}}";
+			sepNavSelRange = "{3446, 0}";
+			sepNavVisRange = "{2176, 502}";
+			sepNavWindowFrame = "{{91, -128}, {1006, 746}}";
+		};
+	};
+	2FA40C2A0E2C15A10083D044 /* offline_exec */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				commandLineArgs = (
+				);
+				displayName = "Executable Runner";
+				environment = {
+				};
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = 2FA40C2B0E2C15A10083D044 /* offline_exec */;
+		libgmallocEnabled = 0;
+		name = offline_exec;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	2FA40C2B0E2C15A10083D044 /* offline_exec */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = "compiled.mach-o.executable";
+		name = offline_exec;
+		path = "/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/build/Development/offline_exec./Contents/MacOS/offline_exec";
+		sourceTree = "<absolute>";
+	};
+	2FC4E6EC0E1D8D5A00DBC279 /* motu.c:203 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 2F1180F80E1AC9F1006731FA /* motu.c */;
+		functionName = "StopMOTU()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 203;
+		location = offline_exec;
+		modificationTime = 237771146.169507;
+		state = 1;
+	};
+	8D01CCC60486CAD60068D4B7 /* offline */ = {
+		activeExec = 0;
+	};
+}

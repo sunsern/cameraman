@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<face_detector>
+<generate_time>Thu Jan 22 21:33:33 GMT-08:00 2009</generate_time>
+<stages>
+	<stage id="0">
+		<features>
+			<feature id="0" type="root">
+				<cond_true_val>0.0</cond_true_val>
+			</feature>
+			<feature id="1" type="eye">
+				<_>0</_>
+				<threshold>105</threshold>
+				<cond_true_val>-1.0</cond_true_val>
+				<cond_false_val>1.0</cond_false_val>
+				<parent>0</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+		</features>
+		<stage_threshold>0.0</stage_threshold>
+	</stage>
+</stages>
+</face_detector>

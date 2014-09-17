@@ -1,0 +1,855 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - Filter.h </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/cameracontroller/Filter_ert_rtw/Filter.h" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/cameracontroller/Filter_ert_rtw/Filter.h</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: Filter.h
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Real-Time Workshop code generated for Simulink model Filter.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Model version                        : 1.6
+<SPAN class="LineNumber">    7   </SPAN> * Real-Time Workshop file version      : 6.5  (R2006b Beta)  21-Sep-2006
+<SPAN class="LineNumber">    8   </SPAN> * Real-Time Workshop file generated on : Wed Jul  9 18:09:11 2008
+<SPAN class="LineNumber">    9   </SPAN> * TLC version                          : 6.5 (Sep 20 2006)
+<SPAN class="LineNumber">   10   </SPAN> * C source code generated on           : Wed Jul  9 18:09:12 2008
+<SPAN class="LineNumber">   11   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _RTW_HEADER_Filter_h_
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> _RTW_HEADER_Filter_h_
+<SPAN class="LineNumber">   14   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _Filter_COMMON_INCLUDES_
+<SPAN class="LineNumber">   15   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> _Filter_COMMON_INCLUDES_
+<SPAN class="LineNumber">   16   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;math.h&gt;</FONT>
+<SPAN class="LineNumber">   17   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;stddef.h&gt;</FONT>
+<SPAN class="LineNumber">   18   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;rtwtypes.h&quot;</FONT>
+<SPAN class="LineNumber">   19   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _Filter_COMMON_INCLUDES_ */</SPAN>
+<SPAN class="LineNumber">   20   </SPAN>
+<SPAN class="LineNumber">   21   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;Filter_types.h&quot;</FONT>
+<SPAN class="LineNumber">   22   </SPAN>
+<SPAN class="LineNumber">   23   </SPAN><SPAN class="Comment">/* Macros for accessing real-time model data structure */</SPAN>
+<SPAN class="LineNumber">   24   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmGetErrorStatus
+<SPAN class="LineNumber">   25   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmGetErrorStatus(rtm)        ((rtm)-&gt;</FONT>errorStatus)
+<SPAN class="LineNumber">   26   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   27   </SPAN>
+<SPAN class="LineNumber">   28   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmSetErrorStatus
+<SPAN class="LineNumber">   29   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;</FONT>errorStatus = (val))
+<SPAN class="LineNumber">   30   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   31   </SPAN>
+<SPAN class="LineNumber">   32   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">   33   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   34   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9[400];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage9;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   35   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage10;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   36   </SPAN><B>}</B> <A NAME=type_BlockIO_Filter>BlockIO_Filter</A>;
+<SPAN class="LineNumber">   37   </SPAN>
+<SPAN class="LineNumber">   38   </SPAN><SPAN class="Comment">/* Block states (auto storage) for system '<a href="matlab: rtwprivate rtwctags_hilite Filter;"><FONT COLOR=#117755><I>&lt;Root&gt;</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   39   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   40   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> MultiBandFilter_FILT_STATES[1600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter;"><FONT COLOR=#117755><I>&lt;Root&gt;/MultiBandFilter</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   41   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage1;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   42   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage2;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   43   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage3;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   44   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage4;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   45   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage5;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   46   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage6;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   47   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES[10400];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage7;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   48   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES[9600];   <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage8;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   49   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES[9600];   <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage9;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   50   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES[9600];  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage10;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   51   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_e[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage1;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   52   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_a[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage2;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   53   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_c[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage3;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   54   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_n[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage4;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   55   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_f[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage5;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   56   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_b[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage6;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   57   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_a[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage7;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   58   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_o[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage8;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   59   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_p[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage9;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   60   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_f[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage10;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   61   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_j[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage1;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   62   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_f[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage2;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   63   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_d[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage3;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   64   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_o[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage4;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   65   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_l[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage5;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   66   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_m[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage6;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   67   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_d[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage7;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   68   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_a[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage8;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   69   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_p3[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage9;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   70   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_m[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage10;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   71   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_k[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage1;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   72   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_j[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage2;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   73   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_ci[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage3;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   74   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_h[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage4;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   75   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_o[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage5;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   76   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_e[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage6;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   77   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_j[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage7;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   78   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_m[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage8;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   79   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_a[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage9;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   80   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_a[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage10;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   81   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_j3[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage1;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   82   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_n[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage2;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   83   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_j[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage3;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   84   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_p[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage4;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   85   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_n[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage5;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   86   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_bo[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage6;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   87   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_h[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage7;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   88   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_n[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage8;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   89   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_l[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage9;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   90   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_e[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage10;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   91   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_a[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage1;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   92   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_o[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage2;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   93   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_h[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage3;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   94   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_f[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage4;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   95   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_e[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage5;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   96   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_i[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage6;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   97   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_m[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage7;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   98   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_nh[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage8;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   99   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_n[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage9;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  100   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_k[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage10;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  101   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_FILT_STATES_c[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage1;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  102   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_FILT_STATES_e[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage2;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  103   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_FILT_STATES_k[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage3;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  104   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_FILT_STATES_pv[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage4;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  105   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_FILT_STATES_g[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage5;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  106   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_FILT_STATES_j[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage6;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  107   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_FILT_STATES_e[10400];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage7;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  108   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_FILT_STATES_i[9600]; <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage8;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  109   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_FILT_STATES_pa[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage9;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage9</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  110   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_FILT_STATES_j[9600];<SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage10;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage10</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  111   </SPAN><B>}</B> <A NAME=type_D_Work_Filter>D_Work_Filter</A>;
+<SPAN class="LineNumber">  112   </SPAN>
+<SPAN class="LineNumber">  113   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  114   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">  115   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel1[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  116   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel2[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  117   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel3[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  118   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel4[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  119   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel5[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  120   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel6[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  121   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel7[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#7;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  122   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel8[400];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Channel#-SP-#8;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  123   </SPAN><B>}</B> <A NAME=type_ExternalInputs_Filter>ExternalInputs_Filter</A>;
+<SPAN class="LineNumber">  124   </SPAN>
+<SPAN class="LineNumber">  125   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  126   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">  127   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output1[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  128   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output2[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  129   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output3[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  130   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output4[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  131   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output5[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  132   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output6[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  133   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output7[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#7;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  134   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Output8[400];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite Filter/Output#-SP-#8;"><FONT COLOR=#117755><I>&lt;Root&gt;/Output 8</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  135   </SPAN><B>}</B> <A NAME=type_ExternalOutputs_Filter>ExternalOutputs_Filter</A>;
+<SPAN class="LineNumber">  136   </SPAN>
+<SPAN class="LineNumber">  137   </SPAN><SPAN class="Comment">/* Parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">  138   </SPAN><SPAN class="Keyword">struct</SPAN> <A HREF=Filter_types_h.html#type_Parameters_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Parameters_Filter</FONT></A> <B>{</B>
+<SPAN class="LineNumber">  139   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> MultiBandFilter_ICRTP;      <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  140   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter;"><FONT COLOR=#117755><I>&lt;Root&gt;/MultiBandFilter</I></FONT></a>'
+<SPAN class="LineNumber">  141   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  142   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> MultiBandFilter_RTP1COEFF[10];<SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  143   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter;"><FONT COLOR=#117755><I>&lt;Root&gt;/MultiBandFilter</I></FONT></a>'
+<SPAN class="LineNumber">  144   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  145   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> MultiBandFilter_RTP2COEFF[3];<SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  146   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter;"><FONT COLOR=#117755><I>&lt;Root&gt;/MultiBandFilter</I></FONT></a>'
+<SPAN class="LineNumber">  147   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  148   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  149   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage1;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  150   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  151   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  152   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage1;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  153   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  154   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  155   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage1;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  156   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  157   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  158   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage2;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  159   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  160   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  161   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage2;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  162   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  163   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  164   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage2;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  165   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  166   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  167   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage3;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  168   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  169   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  170   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage3;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  171   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  172   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  173   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage3;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  174   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  175   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  176   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage4;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  177   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  178   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  179   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage4;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  180   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  181   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  182   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage4;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  183   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  184   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  185   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage5;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  186   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  187   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  188   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage5;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  189   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  190   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  191   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage5;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  192   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  193   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  194   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage6;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  195   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  196   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  197   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage6;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  198   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  199   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  200   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage6;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  201   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  202   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  203   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage7;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  204   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  205   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF[65];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  206   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage7;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  207   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  208   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF[14];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  209   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage7;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  210   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  211   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  212   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage8;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  213   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  214   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF[60];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  215   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage8;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  216   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  217   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF[13];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  218   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage8;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  219   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  220   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP;               <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  221   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage9;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  222   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  223   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF[60];       <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  224   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage9;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  225   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  226   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF[13];       <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  227   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage9;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  228   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  229   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP;              <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  230   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage10;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  231   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  232   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF[60];      <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  233   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage10;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  234   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  235   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF[13];      <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  236   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1/Stage10;"><FONT COLOR=#117755><I>&lt;S1&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  237   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  238   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  239   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage1;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  240   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  241   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_m[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  242   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage1;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  243   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  244   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_h[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  245   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage1;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  246   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  247   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_e;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  248   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage2;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  249   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  250   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_h[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  251   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage2;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  252   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  253   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_f[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  254   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage2;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  255   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  256   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_o;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  257   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage3;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  258   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  259   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_j[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  260   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage3;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  261   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  262   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_d[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  263   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage3;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  264   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  265   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_m;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  266   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage4;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  267   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  268   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_l[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  269   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage4;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  270   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  271   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_b[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  272   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage4;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  273   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  274   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_m;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  275   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage5;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  276   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  277   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_j[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  278   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage5;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  279   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  280   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_d[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  281   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage5;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  282   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  283   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_p;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  284   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage6;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  285   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  286   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_o[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  287   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage6;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  288   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  289   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_h[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  290   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage6;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  291   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  292   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_o;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  293   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage7;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  294   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  295   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_n[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  296   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage7;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  297   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  298   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_o[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  299   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage7;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  300   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  301   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_c;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  302   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage8;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  303   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  304   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_h[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  305   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage8;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  306   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  307   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_c[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  308   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage8;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  309   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  310   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_p;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  311   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage9;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  312   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  313   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_o[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  314   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage9;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  315   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  316   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_o[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  317   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage9;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  318   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  319   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_d;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  320   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage10;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  321   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  322   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_o[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  323   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage10;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  324   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  325   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_g[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  326   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2/Stage10;"><FONT COLOR=#117755><I>&lt;S2&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  327   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  328   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_g;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  329   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage1;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  330   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  331   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_o[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  332   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage1;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  333   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  334   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_n[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  335   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage1;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  336   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  337   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_m;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  338   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage2;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  339   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  340   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_n[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  341   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage2;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  342   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  343   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_m[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  344   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage2;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  345   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  346   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_h;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  347   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage3;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  348   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  349   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_i[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  350   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage3;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  351   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  352   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_p[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  353   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage3;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  354   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  355   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_n;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  356   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage4;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  357   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  358   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_d[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  359   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage4;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  360   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  361   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_n[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  362   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage4;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  363   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  364   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_a;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  365   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage5;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  366   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  367   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_jd[65];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  368   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage5;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  369   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  370   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_i[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  371   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage5;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  372   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  373   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_b;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  374   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage6;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  375   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  376   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_j[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  377   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage6;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  378   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  379   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_n[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  380   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage6;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  381   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  382   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_g;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  383   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage7;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  384   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  385   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_i[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  386   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage7;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  387   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  388   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_b[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  389   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage7;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  390   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  391   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_k;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  392   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage8;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  393   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  394   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_l[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  395   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage8;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  396   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  397   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_n[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  398   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage8;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  399   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  400   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_b;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  401   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage9;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  402   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  403   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_b[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  404   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage9;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  405   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  406   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_i[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  407   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage9;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  408   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  409   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_m;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  410   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage10;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  411   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  412   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_a[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  413   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage10;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  414   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  415   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_a[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  416   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3/Stage10;"><FONT COLOR=#117755><I>&lt;S3&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  417   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  418   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_o;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  419   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage1;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  420   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  421   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_f[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  422   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage1;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  423   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  424   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_no[14];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  425   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage1;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  426   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  427   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_m3;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  428   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage2;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  429   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  430   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_l[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  431   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage2;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  432   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  433   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  434   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage2;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  435   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  436   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  437   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage3;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  438   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  439   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_o[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  440   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage3;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  441   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  442   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_p1[14];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  443   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage3;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  444   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  445   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_e;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  446   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage4;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  447   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  448   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_n[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  449   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage4;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  450   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  451   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_k[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  452   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage4;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  453   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  454   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_a3;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  455   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage5;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  456   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  457   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_n[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  458   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage5;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  459   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  460   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_b[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  461   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage5;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  462   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  463   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_pb;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  464   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage6;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  465   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  466   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_h[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  467   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage6;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  468   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  469   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_k[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  470   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage6;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  471   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  472   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  473   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage7;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  474   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  475   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_m[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  476   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage7;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  477   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  478   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_f[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  479   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage7;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  480   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  481   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_h;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  482   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage8;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  483   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  484   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_e[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  485   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage8;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  486   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  487   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_m[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  488   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage8;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  489   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  490   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_e;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  491   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage9;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  492   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  493   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_i[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  494   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage9;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  495   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  496   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_i3[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  497   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage9;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  498   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  499   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_j;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  500   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage10;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  501   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  502   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_h[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  503   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage10;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  504   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  505   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_am[13];   <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  506   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4/Stage10;"><FONT COLOR=#117755><I>&lt;S4&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  507   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  508   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_i;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  509   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage1;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  510   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  511   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_g[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  512   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage1;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  513   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  514   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  515   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage1;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  516   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  517   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_i;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  518   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage2;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  519   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  520   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_j[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  521   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage2;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  522   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  523   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_o[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  524   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage2;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  525   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  526   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_c;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  527   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage3;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  528   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  529   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_b[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  530   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage3;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  531   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  532   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  533   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage3;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  534   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  535   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  536   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage4;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  537   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  538   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_f[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  539   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage4;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  540   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  541   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_n4[14];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  542   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage4;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  543   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  544   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_b;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  545   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage5;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  546   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  547   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_o[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  548   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage5;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  549   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  550   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  551   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage5;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  552   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  553   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_f;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  554   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage6;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  555   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  556   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_hm[65];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  557   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage6;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  558   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  559   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_hr[14];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  560   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage6;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  561   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  562   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_l;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  563   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage7;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  564   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  565   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_f[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  566   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage7;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  567   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  568   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  569   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage7;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  570   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  571   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_g;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  572   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage8;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  573   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  574   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_c[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  575   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage8;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  576   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  577   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_cb[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  578   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage8;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  579   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  580   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_a;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  581   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage9;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  582   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  583   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_g[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  584   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage9;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  585   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  586   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_b[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  587   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage9;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  588   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  589   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_l;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  590   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage10;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  591   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  592   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_i[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  593   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage10;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  594   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  595   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_h[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  596   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5/Stage10;"><FONT COLOR=#117755><I>&lt;S5&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  597   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  598   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_n;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  599   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage1;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  600   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  601   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_h[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  602   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage1;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  603   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  604   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_l[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  605   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage1;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  606   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  607   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  608   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage2;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  609   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  610   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_c[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  611   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage2;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  612   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  613   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_p[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  614   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage2;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  615   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  616   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_c5;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  617   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage3;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  618   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  619   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_ja[65];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  620   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage3;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  621   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  622   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_h[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  623   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage3;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  624   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  625   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_mz;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  626   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage4;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  627   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  628   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_a[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  629   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage4;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  630   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  631   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_c[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  632   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage4;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  633   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  634   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_h;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  635   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage5;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  636   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  637   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_l[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  638   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage5;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  639   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  640   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_f[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  641   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage5;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  642   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  643   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_e;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  644   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage6;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  645   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  646   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_a[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  647   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage6;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  648   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  649   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_b[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  650   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage6;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  651   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  652   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_d;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  653   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage7;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  654   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  655   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_d[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  656   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage7;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  657   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  658   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_h[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  659   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage7;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  660   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  661   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_e;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  662   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage8;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  663   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  664   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_d[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  665   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage8;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  666   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  667   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_g[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  668   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage8;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  669   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  670   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  671   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage9;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  672   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  673   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_a[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  674   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage9;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  675   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  676   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_j[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  677   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage9;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  678   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  679   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_j4;           <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  680   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage10;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  681   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  682   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_b[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  683   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage10;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  684   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  685   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_f[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  686   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6/Stage10;"><FONT COLOR=#117755><I>&lt;S6&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  687   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  688   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_ICRTP_jt;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  689   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage1;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  690   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  691   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP1COEFF_c[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  692   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage1;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  693   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  694   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage1_RTP2COEFF_b[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  695   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage1;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage1</I></FONT></a>'
+<SPAN class="LineNumber">  696   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  697   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_ICRTP_d;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  698   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage2;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  699   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  700   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP1COEFF_g[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  701   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage2;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  702   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  703   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage2_RTP2COEFF_f3[14];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  704   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage2;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage2</I></FONT></a>'
+<SPAN class="LineNumber">  705   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  706   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_ICRTP_m;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  707   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage3;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  708   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  709   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP1COEFF_a[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  710   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage3;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  711   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  712   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage3_RTP2COEFF_m[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  713   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage3;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage3</I></FONT></a>'
+<SPAN class="LineNumber">  714   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  715   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_ICRTP_k;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  716   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage4;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  717   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  718   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP1COEFF_d3[65];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  719   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage4;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  720   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  721   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage4_RTP2COEFF_o[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  722   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage4;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage4</I></FONT></a>'
+<SPAN class="LineNumber">  723   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  724   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  725   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage5;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  726   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  727   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP1COEFF_f[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  728   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage5;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  729   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  730   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage5_RTP2COEFF_a[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  731   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage5;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage5</I></FONT></a>'
+<SPAN class="LineNumber">  732   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  733   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_ICRTP_j;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  734   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage6;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  735   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  736   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP1COEFF_k[65];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  737   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage6;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  738   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  739   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage6_RTP2COEFF_e[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  740   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage6;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage6</I></FONT></a>'
+<SPAN class="LineNumber">  741   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  742   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_ICRTP_k;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  743   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage7;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  744   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  745   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP1COEFF_iw[65];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  746   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage7;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  747   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  748   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage7_RTP2COEFF_g[14];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  749   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage7;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage7</I></FONT></a>'
+<SPAN class="LineNumber">  750   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  751   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_ICRTP_e5;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  752   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage8;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  753   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  754   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP1COEFF_j[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  755   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage8;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  756   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  757   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage8_RTP2COEFF_d[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  758   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage8;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage8</I></FONT></a>'
+<SPAN class="LineNumber">  759   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  760   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_ICRTP_h;             <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  761   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage9;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  762   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  763   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP1COEFF_c[60];     <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  764   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage9;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  765   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  766   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage9_RTP2COEFF_l[13];     <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  767   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage9;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage9</I></FONT></a>'
+<SPAN class="LineNumber">  768   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  769   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_ICRTP_p;            <SPAN class="Comment">/* Expression: a.IC
+<SPAN class="LineNumber">  770   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage10;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  771   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  772   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP1COEFF_n[60];    <SPAN class="Comment">/* Expression: a.SOSCoeffs
+<SPAN class="LineNumber">  773   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage10;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  774   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  775   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Stage10_RTP2COEFF_e[13];    <SPAN class="Comment">/* Expression: a.ScaleValues
+<SPAN class="LineNumber">  776   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7/Stage10;"><FONT COLOR=#117755><I>&lt;S7&gt;/Stage10</I></FONT></a>'
+<SPAN class="LineNumber">  777   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  778   </SPAN><B>}</B>;
+<SPAN class="LineNumber">  779   </SPAN>
+<SPAN class="LineNumber">  780   </SPAN><SPAN class="Comment">/* Real-time Model Data Structure */</SPAN>
+<SPAN class="LineNumber">  781   </SPAN><SPAN class="Keyword">struct</SPAN> <A HREF=Filter_types_h.html#type_RT_MODEL_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_Filter</FONT></A> <B>{</B>
+<SPAN class="LineNumber">  782   </SPAN>  <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> * <SPAN class="Datatype">volatile</SPAN> errorStatus;
+<SPAN class="LineNumber">  783   </SPAN><B>}</B>;
+<SPAN class="LineNumber">  784   </SPAN>
+<SPAN class="LineNumber">  785   </SPAN><SPAN class="Comment">/* Block parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">  786   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_types_h.html#type_Parameters_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Parameters_Filter</FONT></A> Filter_P;
+<SPAN class="LineNumber">  787   </SPAN>
+<SPAN class="LineNumber">  788   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">  789   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_h.html#type_BlockIO_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_Filter</FONT></A> Filter_B;
+<SPAN class="LineNumber">  790   </SPAN>
+<SPAN class="LineNumber">  791   </SPAN><SPAN class="Comment">/* Block states (auto storage) */</SPAN>
+<SPAN class="LineNumber">  792   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_h.html#type_D_Work_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">D_Work_Filter</FONT></A> Filter_DWork;
+<SPAN class="LineNumber">  793   </SPAN>
+<SPAN class="LineNumber">  794   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  795   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_h.html#type_ExternalInputs_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalInputs_Filter</FONT></A> Filter_U;
+<SPAN class="LineNumber">  796   </SPAN>
+<SPAN class="LineNumber">  797   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  798   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_h.html#type_ExternalOutputs_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalOutputs_Filter</FONT></A> Filter_Y;
+<SPAN class="LineNumber">  799   </SPAN>
+<SPAN class="LineNumber">  800   </SPAN><SPAN class="Comment">/* Model entry point functions */</SPAN>
+<SPAN class="LineNumber">  801   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=Filter_c.html#fcn_Filter_initialize TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Filter_initialize</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  802   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=Filter_c.html#fcn_Filter_step TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Filter_step</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  803   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=Filter_c.html#fcn_Filter_terminate TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Filter_terminate</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  804   </SPAN>
+<SPAN class="LineNumber">  805   </SPAN><SPAN class="Comment">/* Real-time Model object */</SPAN>
+<SPAN class="LineNumber">  806   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=Filter_types_h.html#type_RT_MODEL_Filter TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_Filter</FONT></A> *Filter_M;
+<SPAN class="LineNumber">  807   </SPAN>
+<SPAN class="LineNumber">  808   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">  809   </SPAN> * The generated code includes comments that allow you to trace directly
+<SPAN class="LineNumber">  810   </SPAN> * back to the appropriate location in the model.  The basic format
+<SPAN class="LineNumber">  811   </SPAN> * is &lt;system&gt;/block_name, where system is the system number (uniquely
+<SPAN class="LineNumber">  812   </SPAN> * assigned by Simulink) and block_name is the name of the block.
+<SPAN class="LineNumber">  813   </SPAN> *
+<SPAN class="LineNumber">  814   </SPAN> * Use the MATLAB hilite_system command to trace the generated code back
+<SPAN class="LineNumber">  815   </SPAN> * to the model.  For example,
+<SPAN class="LineNumber">  816   </SPAN> *
+<SPAN class="LineNumber">  817   </SPAN> * hilite_system('<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3;"><FONT COLOR=#117755><I>&lt;S3&gt;</I></FONT></a>')    - opens system 3
+<SPAN class="LineNumber">  818   </SPAN> * hilite_system('&lt;S3&gt;/Kp') - opens and selects block Kp which resides in S3
+<SPAN class="LineNumber">  819   </SPAN> *
+<SPAN class="LineNumber">  820   </SPAN> * Here is the system hierarchy for this model
+<SPAN class="LineNumber">  821   </SPAN> *
+<SPAN class="LineNumber">  822   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter;"><FONT COLOR=#117755><I>&lt;Root&gt;</I></FONT></a>' : Filter
+<SPAN class="LineNumber">  823   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter1;"><FONT COLOR=#117755><I>&lt;S1&gt;</I></FONT></a>'   : Filter/MultiBandFilter1
+<SPAN class="LineNumber">  824   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter2;"><FONT COLOR=#117755><I>&lt;S2&gt;</I></FONT></a>'   : Filter/MultiBandFilter2
+<SPAN class="LineNumber">  825   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter3;"><FONT COLOR=#117755><I>&lt;S3&gt;</I></FONT></a>'   : Filter/MultiBandFilter3
+<SPAN class="LineNumber">  826   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter4;"><FONT COLOR=#117755><I>&lt;S4&gt;</I></FONT></a>'   : Filter/MultiBandFilter4
+<SPAN class="LineNumber">  827   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter5;"><FONT COLOR=#117755><I>&lt;S5&gt;</I></FONT></a>'   : Filter/MultiBandFilter5
+<SPAN class="LineNumber">  828   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter6;"><FONT COLOR=#117755><I>&lt;S6&gt;</I></FONT></a>'   : Filter/MultiBandFilter6
+<SPAN class="LineNumber">  829   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite Filter/MultiBandFilter7;"><FONT COLOR=#117755><I>&lt;S7&gt;</I></FONT></a>'   : Filter/MultiBandFilter7
+<SPAN class="LineNumber">  830   </SPAN> */</SPAN>
+<SPAN class="LineNumber">  831   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _RTW_HEADER_Filter_h_ */</SPAN>
+<SPAN class="LineNumber">  832   </SPAN>
+<SPAN class="LineNumber">  833   </SPAN><SPAN class="Comment">/* File trailer for Real-Time Workshop generated code.
+<SPAN class="LineNumber">  834   </SPAN> *
+<SPAN class="LineNumber">  835   </SPAN> * [EOF]
+<SPAN class="LineNumber">  836   </SPAN> */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>

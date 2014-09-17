@@ -1,0 +1,3 @@
+The motu.h/.c class allows you to connect to the MOTU and stream data from all the channels that are active.  Currently we can stream 8 channels (1 wireless + 7 wired mics).  See the .h file for the function headers.  You simply must call StartMOTU and pass an appropriate callback function that will handle the audio as it comes in.  See test_motu_class.c for a usage example.
+
+-Evan

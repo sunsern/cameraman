@@ -1,0 +1,237 @@
+import com.cycling74.max.*;
+import com.cycling74.jitter.*;
+
+public class HandInBox extends MaxObject {
+    
+    private int[] border_color = new int[] {255,0,255,0};
+    private int[] offset = new int[] {0,0};
+    private int input_w, input_h, line_width;
+    private final int[] red = {255, 255, 0, 0};
+    private final int[] blue = {255, 0, 0, 255};
+
+    public int box_x, box_y, box_size;
+    public int default_x, default_y;
+
+    private boolean verifying = false;
+    private int handin_count = 0;
+    private int verify_timer = 0;
+    private final int TIMEOUT = 150; // magic constant
+
+    public boolean hand_in_box = false;
+    public int[] color = red;
+
+    // added by Sunsern
+    private final int NUM_FRAME = 50;
+    public float frame_score = 0f; // score of the current frame
+    public float[] frame_score_hist = new float[NUM_FRAME]; // score of the last NUM_FRAME frames
+    private int frame_score_hist_idx = 0;
+
+    private JitterMatrix jm = new JitterMatrix();
+    private JitterMatrix score_jm = new JitterMatrix();
+
+    private float getFrameScore(int tx, int ty, int tsize) {
+    	int[] dim = score_jm.getDim();
+    	int planecount = score_jm.getPlanecount();
+	float[] row = new float[dim[0] * planecount];
+	float score;
+
+    	int x = tx*dim[0]/input_w;
+    	int y = ty*dim[1]/input_h;
+    	int size = tsize*dim[1]/input_h;
+
+	score = 0f;
+	for(int j = 0; j<size; j++) {
+	    offset[0] = 0;
+	    offset[1] = y+j;
+	    score_jm.copyVectorToArray(0, offset, row, dim[0]*planecount, 0);
+	    for (int i=x; i<x+size; i++) {
+		score += row[i*planecount]; 
+	    }
+	}
+	return score / (size*size);
+    }
+
+
+    private boolean handInBox(int tx, int ty, int tsize) {
+
+	float mean = 0f;
+	for (int i=0;i<NUM_FRAME;i++) {
+	    mean += frame_score_hist[i];
+	}
+
+	mean = mean / (float)NUM_FRAME;
+
+	post("mean score = " + mean);
+	
+	return (mean > 0f);
+	
+    }
+
+    private void drawVertical(int x, int y, int size) {
+	int[] dim = jm.getDim();
+	int planecount = jm.getPlanecount();
+    	int[] row = new int[dim[0] * planecount];
+
+	for (int i=0;i<size;i++) {
+            offset[0] = 0;
+            offset[1] = y+i;
+            jm.copyVectorToArray(0, offset, row, dim[0]*planecount, 0);
+
+            for (int k=0;k<line_width;k++) {
+                for (int p=0;p<planecount;p++) {
+                    row[(x+k)*planecount + p] = color[p];
+                    row[(x+size-1-k)*planecount + p] = color[p];
+                }
+            }
+
+            jm.copyArrayToVector(0, offset, row, dim[0]*planecount, 0);
+        }
+
+    }
+
+    private void drawHorizontal(int x, int y, int len) {
+    	int[] dim = jm.getDim();
+    	int planecount = jm.getPlanecount();
+    	int[] row = new int[dim[0] * planecount];
+
+	for (int j=0;j<line_width;j++) {
+
+	offset[0] = 0;
+	offset[1] = y + j;
+
+	jm.copyVectorToArray(0, offset, row, dim[0]*planecount, 0);
+	for (int i=x; i<x+len; i++) {
+	    for (int p=0; p<planecount; p++) {
+		row[p+i*planecount] = color[p];
+	    }
+	}
+
+	jm.copyArrayToVector(0, offset, row, dim[0]*planecount, 0);
+	
+	}
+    }
+	    
+    
+    private void drawBox(int tx,int ty,int tsize) {
+    	int[] dim = jm.getDim();
+    	int planecount = jm.getPlanecount();
+    	int[] row = new int[dim[0] * planecount];
+
+    	int x = tx*dim[0]/input_w;
+    	int y = ty*dim[1]/input_h;
+    	int size = tsize*dim[1]/input_h;
+
+	drawHorizontal(x, y, size);
+	drawHorizontal(x, y+size, size);
+	drawVertical(x,y,size);
+    }
+    
+    public HandInBox(int d_x, int d_y, int b_x, int b_y, int b_size) {
+	post("HIB interface");
+    	input_w = d_x;
+    	input_h = d_y;
+	line_width = 4;
+	default_x = b_x;
+	box_x = b_x;
+	default_y = b_y;
+	box_y = b_y;
+	box_size = b_size;
+    	declareIO(2,5);
+    }
+
+    public void face(Atom[] l) {
+	if (l.length >= 3) {
+	    //post("hib: face at " + l[0] + " " + l[1] + " " + l[2]);
+
+	    box_x = l[0].getInt() -  100;
+	    if (box_x < 0) box_x = default_x;
+
+	    box_y = l[1].getInt();
+	    if (box_y+box_size > input_h) box_y = default_y;
+
+	}
+    }
+
+    
+    public void jit_matrix(String s) {
+
+	int inlet_no = getInlet();
+	
+  	if (inlet_no == 0) {
+	    
+	    jm.frommatrix(s);
+	    if (verifying) {
+		verify_timer--;
+		//post("timer: " + verify_timer);
+		drawBox(box_x, box_y, box_size);
+		//if (hand_in_box) {
+		    if (hand_in_box && !handInBox(box_x, box_y, box_size)) {
+			outletBang(1);
+			hand_in_box = false;
+			color = red;
+			outlet(2, "hand_out");
+			verify_timer = TIMEOUT;
+
+			if (handin_count == 1) {
+			    disp("okay, now put your hand in the box again...");
+			}
+		    } else if (!hand_in_box && handInBox(box_x, box_y, box_size)) {
+			outletBang(1);
+			hand_in_box = true;
+			color = blue;
+			outlet(2, "hand_in");
+			handin_count++;
+			post("hib: "+handin_count);
+			if (handin_count == 1) {
+			    disp("Now take your hand out of the box.");
+			} else if (handin_count >= 2) {
+			    outlet(2, "verified");
+			    disp("starting recording...");
+			    verifying = false;
+			}
+			verify_timer = TIMEOUT;
+		    }
+		    //}
+		
+		if (verify_timer < 0) {
+		    verifying = false;
+		    disp("");
+		    outlet(2, "not_verified");
+		}
+	    }
+	    outlet(0,"jit_matrix",jm.getName());
+	}
+	else if (inlet_no == 1) {
+	    score_jm.frommatrix(s);
+	    frame_score = getFrameScore(box_x, box_y, box_size);
+	    frame_score_hist[frame_score_hist_idx] = frame_score;
+	    frame_score_hist_idx = (frame_score_hist_idx + 1) % NUM_FRAME; 
+	    outlet(4,frame_score);
+	}
+    }
+
+    public void start_recording() {
+	disp("We're recording now!");
+    }
+
+    public void stop_recording() {
+	disp("");
+    }
+
+
+    private void disp(String s) {
+	outlet(3, "set", new Atom[]{Atom.newAtom(s)});
+    }
+
+    public void verify() {
+	verifying = true;
+	verify_timer = TIMEOUT;
+	color = red;
+	hand_in_box = false;
+	handin_count = 0;
+
+	disp("To record yourself, put your hand in the red box.");
+    }
+	    
+    
+}

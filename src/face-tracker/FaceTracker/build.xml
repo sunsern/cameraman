@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="FaceTracker">
+    <property environment="env"/>
+    <property name="FaceAlign.location" value="../FaceAlign"/>
+    <property name="ECLIPSE_HOME" value="../../../../usr/share/eclipse"/>
+    <property name="Detector-3.0.location" value="../Detector-3.0"/>
+    <property name="ParticleFilter.location" value="../ParticleFilter"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="Detector-3.0.classpath">
+        <pathelement location="${Detector-3.0.location}/bin"/>
+    </path>
+    <path id="ParticleFilter.classpath">
+        <pathelement location="${ParticleFilter.location}/bin"/>
+    </path>
+    <path id="FaceTracker.classpath">
+        <pathelement location="bin"/>
+        <path refid="Detector-3.0.classpath"/>
+        <path refid="ParticleFilter.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="${Detector-3.0.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${ParticleFilter.location}/build.xml" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="${Detector-3.0.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="${ParticleFilter.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="FaceTracker.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="${FaceAlign.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${FaceAlign.location}/build.xml" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="FaceTracker">
+        <java classname="facetracker.FaceTracker" failonerror="true" fork="yes">
+            <arg line="/home/scheaman/Desktop/person_recognition/sunsern4-HQ"/>
+            <classpath refid="FaceTracker.classpath"/>
+        </java>
+    </target>
+</project>

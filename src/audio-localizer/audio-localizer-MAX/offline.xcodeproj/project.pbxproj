@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5B62020919440900A62EB9 /* MaxAPI.framework */; };
+		2F1180F90E1AC9F1006731FA /* motu.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F1180F80E1AC9F1006731FA /* motu.c */; };
+		2F1181030E1ACB62006731FA /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1181020E1ACB62006731FA /* CoreAudio.framework */; };
+		2F1181070E1ACB75006731FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1181060E1ACB75006731FA /* AudioToolbox.framework */; };
+		2F11810B0E1ACB7F006731FA /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F11810A0E1ACB7F006731FA /* AudioUnit.framework */; };
+		2F1181110E1ACC5F006731FA /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1181100E1ACC5F006731FA /* libportaudio.a */; };
+		2F71EC5B0E257FB0009DA916 /* Filter_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F71EC5A0E257FB0009DA916 /* Filter_data.c */; };
+		2F71EC5D0E257FB6009DA916 /* Filter.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F71EC5C0E257FB6009DA916 /* Filter.c */; };
+		2FA2037A0E1AD90D00255033 /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA203790E1AD90D00255033 /* libportaudio.2.dylib */; };
+		2FA40BBC0E2C0B1D0083D044 /* offline.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FA40BBB0E2C0B1D0083D044 /* offline.c */; };
+		2FA712680E1AC93E006859CE /* dsp_rt_ert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA712670E1AC93E006859CE /* dsp_rt_ert.a */; };
+		2FA7126A0E1AC954006859CE /* rtwlib_ert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA712690E1AC954006859CE /* rtwlib_ert.a */; };
+		2FF1E11F0E1AC61400250858 /* PHAT_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1E11E0E1AC61400250858 /* PHAT_data.c */; };
+		2FF1E1210E1AC61C00250858 /* PHAT.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1E1200E1AC61C00250858 /* PHAT.c */; };
+		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0F5B62020919440900A62EB9 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = /Library/Frameworks/MaxAPI.framework; sourceTree = "<absolute>"; };
+		2F1180F80E1AC9F1006731FA /* motu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = motu.c; path = "../../../../MOTU-drivers/MOTU/motu.c"; sourceTree = SOURCE_ROOT; };
+		2F1181020E1ACB62006731FA /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		2F1181060E1ACB75006731FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		2F11810A0E1ACB7F006731FA /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = /System/Library/Frameworks/AudioUnit.framework; sourceTree = "<absolute>"; };
+		2F1181100E1ACC5F006731FA /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = "../../../../MOTU-drivers/portaudio/lib/.libs/libportaudio.a"; sourceTree = SOURCE_ROOT; };
+		2F71EC5A0E257FB0009DA916 /* Filter_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Filter_data.c; path = Filter_ert_rtw/Filter_data.c; sourceTree = "<group>"; };
+		2F71EC5C0E257FB6009DA916 /* Filter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Filter.c; path = Filter_ert_rtw/Filter.c; sourceTree = "<group>"; };
+		2FA203790E1AD90D00255033 /* libportaudio.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.dylib; path = "../../../../MOTU-drivers/portaudio/lib/.libs/libportaudio.2.dylib"; sourceTree = SOURCE_ROOT; };
+		2FA40BBB0E2C0B1D0083D044 /* offline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = offline.c; sourceTree = "<group>"; };
+		2FA712670E1AC93E006859CE /* dsp_rt_ert.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = dsp_rt_ert.a; path = /Applications/MATLAB73/toolbox/dspblks/lib/maci/dsp_rt_ert.a; sourceTree = "<absolute>"; };
+		2FA712690E1AC954006859CE /* rtwlib_ert.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = rtwlib_ert.a; path = /Applications/MATLAB73/rtw/c/lib/maci/rtwlib_ert.a; sourceTree = "<absolute>"; };
+		2FF1E11E0E1AC61400250858 /* PHAT_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = PHAT_data.c; path = PHAT_ert_rtw/PHAT_data.c; sourceTree = "<group>"; };
+		2FF1E1200E1AC61C00250858 /* PHAT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = PHAT.c; path = PHAT_ert_rtw/PHAT.c; sourceTree = "<group>"; };
+		8D01CCD20486CAD60068D4B7 /* offline_exec. */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = offline_exec.; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
+				0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */,
+				2FA712680E1AC93E006859CE /* dsp_rt_ert.a in Frameworks */,
+				2FA7126A0E1AC954006859CE /* rtwlib_ert.a in Frameworks */,
+				2F1181030E1ACB62006731FA /* CoreAudio.framework in Frameworks */,
+				2F1181070E1ACB75006731FA /* AudioToolbox.framework in Frameworks */,
+				2F11810B0E1ACB7F006731FA /* AudioUnit.framework in Frameworks */,
+				2F1181110E1ACC5F006731FA /* libportaudio.a in Frameworks */,
+				2FA2037A0E1AD90D00255033 /* libportaudio.2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* maximum */ = {
+			isa = PBXGroup;
+			children = (
+				2FA40BBB0E2C0B1D0083D044 /* offline.c */,
+				2F71EC5C0E257FB6009DA916 /* Filter.c */,
+				2F71EC5A0E257FB0009DA916 /* Filter_data.c */,
+				2F1180F80E1AC9F1006731FA /* motu.c */,
+				2FF1E1200E1AC61C00250858 /* PHAT.c */,
+				2FF1E11E0E1AC61400250858 /* PHAT_data.c */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = maximum;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2FA203790E1AD90D00255033 /* libportaudio.2.dylib */,
+				2F1181100E1ACC5F006731FA /* libportaudio.a */,
+				2F11810A0E1ACB7F006731FA /* AudioUnit.framework */,
+				2F1181060E1ACB75006731FA /* AudioToolbox.framework */,
+				2F1181020E1ACB62006731FA /* CoreAudio.framework */,
+				2FA712690E1AC954006859CE /* rtwlib_ert.a */,
+				2FA712670E1AC93E006859CE /* dsp_rt_ert.a */,
+				0F5B62020919440900A62EB9 /* MaxAPI.framework */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D01CCD20486CAD60068D4B7 /* offline_exec. */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D01CCC70486CAD60068D4B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D01CCC60486CAD60068D4B7 /* offline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FF6670A096B494E00E9E0B4 /* Build configuration list for PBXNativeTarget "offline" */;
+			buildPhases = (
+				8D01CCC70486CAD60068D4B7 /* Headers */,
+				8D01CCC90486CAD60068D4B7 /* Resources */,
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+				8D01CCCF0486CAD60068D4B7 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = offline;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = MaxExternal;
+			productReference = 8D01CCD20486CAD60068D4B7 /* offline_exec. */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0FF6670E096B494E00E9E0B4 /* Build configuration list for PBXProject "offline" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* maximum */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D01CCC60486CAD60068D4B7 /* offline */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D01CCC90486CAD60068D4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8D01CCCF0486CAD60068D4B7 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FF1E11F0E1AC61400250858 /* PHAT_data.c in Sources */,
+				2FF1E1210E1AC61C00250858 /* PHAT.c in Sources */,
+				2F1180F90E1AC9F1006731FA /* motu.c in Sources */,
+				2F71EC5B0E257FB0009DA916 /* Filter_data.c in Sources */,
+				2F71EC5D0E257FB6009DA916 /* Filter.c in Sources */,
+				2FA40BBC0E2C0B1D0083D044 /* offline.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0FF6670B096B494E00E9E0B4 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DSTROOT = "$(PROJECT_DIR)";
+				EXECUTABLE_PREFIX = "";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "../../c74support/max-includes/macho-prefix.h";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"../../../../MOTU-drivers/portaudio/include",
+					"../../../../MOTU-drivers/MOTU/",
+					./Filter_ert_rtw/,
+					./PHAT_ert_rtw/,
+					/Applications/MATLAB73/rtw/c/ert,
+					/Applications/MATLAB73/extern/include,
+					/Applications/MATLAB73/simulink/include,
+					/Applications/MATLAB73/rtw/c/src,
+					/Applications/MATLAB73/rtw/c/src/ext_mode/common,
+					/Applications/MATLAB73/rtw/c/libsrc,
+					/Applications/MATLAB73/toolbox/dspblks/include,
+					"../../c74support/max-includes",
+				);
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "/../../../sysbuild/$(CONFIGURATION)/Cycling '74/externals";
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../MOTU-drivers/portaudio/lib/.libs",
+					/Applications/MATLAB73/toolbox/lib/maci,
+					/Applications/MATLAB73/rtw/c/lib/maci,
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_APPS_DIR)/MATLAB73/toolbox/dspblks/lib/maci\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_STYLE = Bundle;
+				MACH_O_TYPE = mh_execute;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = offline_exec;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = "";
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		0FF6670C096B494E00E9E0B4 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "../../c74support/max-includes/macho-prefix.h";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = "../../c74support/max-includes";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "/../../../sysbuild/$(CONFIGURATION)/Cycling '74/externals";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_APPS_DIR)/MATLAB73/toolbox/dspblks/lib/maci\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SYSTEM_APPS_DIR)/MATLAB73/rtw/c/lib/maci\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = maximum;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = mxo;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		0FF6670D096B494E00E9E0B4 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEPLOYMENT_LOCATION = NO;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "../../c74support/max-includes/macho-prefix.h";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = "../../c74support/max-includes";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "/../../../sysbuild/$(CONFIGURATION)/Cycling '74/externals";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_APPS_DIR)/MATLAB73/toolbox/dspblks/lib/maci\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SYSTEM_APPS_DIR)/MATLAB73/rtw/c/lib/maci\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../../MOTU-drivers/portaudio/lib/.libs\"";
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = maximum;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = mxo;
+			};
+			name = Default;
+		};
+		0FF6670F096B494E00E9E0B4 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = offline_exec;
+				PRODUCT_NAME = offline_exec;
+			};
+			name = Development;
+		};
+		0FF66710096B494E00E9E0B4 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		0FF66711096B494E00E9E0B4 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FF6670A096B494E00E9E0B4 /* Build configuration list for PBXNativeTarget "offline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FF6670B096B494E00E9E0B4 /* Development */,
+				0FF6670C096B494E00E9E0B4 /* Deployment */,
+				0FF6670D096B494E00E9E0B4 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		0FF6670E096B494E00E9E0B4 /* Build configuration list for PBXProject "offline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FF6670F096B494E00E9E0B4 /* Development */,
+				0FF66710096B494E00E9E0B4 /* Deployment */,
+				0FF66711096B494E00E9E0B4 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

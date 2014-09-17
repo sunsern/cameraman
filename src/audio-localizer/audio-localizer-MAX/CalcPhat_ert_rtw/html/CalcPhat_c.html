@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - CalcPhat.c </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/CalcPhat_ert_rtw/CalcPhat.c" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/CalcPhat_ert_rtw/CalcPhat.c</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: CalcPhat.c
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Real-Time Workshop code generated for Simulink model CalcPhat.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Model version                        : 1.3
+<SPAN class="LineNumber">    7   </SPAN> * Real-Time Workshop file version      : 6.5  (R2006b Beta)  21-Sep-2006
+<SPAN class="LineNumber">    8   </SPAN> * Real-Time Workshop file generated on : Wed Oct  8 13:31:41 2008
+<SPAN class="LineNumber">    9   </SPAN> * TLC version                          : 6.5 (Sep 20 2006)
+<SPAN class="LineNumber">   10   </SPAN> * C source code generated on           : Wed Oct  8 13:31:42 2008
+<SPAN class="LineNumber">   11   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;CalcPhat.h&quot;</FONT>
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;CalcPhat_private.h&quot;</FONT>
+<SPAN class="LineNumber">   14   </SPAN>
+<SPAN class="LineNumber">   15   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">   16   </SPAN><A HREF=CalcPhat_h.html#type_BlockIO_CalcPhat TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_CalcPhat</FONT></A> CalcPhat_B;
+<SPAN class="LineNumber">   17   </SPAN>
+<SPAN class="LineNumber">   18   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   19   </SPAN><A HREF=CalcPhat_h.html#type_ExternalInputs_CalcPhat TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalInputs_CalcPhat</FONT></A> CalcPhat_U;
+<SPAN class="LineNumber">   20   </SPAN>
+<SPAN class="LineNumber">   21   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   22   </SPAN><A HREF=CalcPhat_h.html#type_ExternalOutputs_CalcPhat TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalOutputs_CalcPhat</FONT></A> CalcPhat_Y;
+<SPAN class="LineNumber">   23   </SPAN>
+<SPAN class="LineNumber">   24   </SPAN><SPAN class="Comment">/* Real-time model */</SPAN>
+<SPAN class="LineNumber">   25   </SPAN><A HREF=CalcPhat_types_h.html#type_RT_MODEL_CalcPhat TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_CalcPhat</FONT></A> CalcPhat_M_;
+<SPAN class="LineNumber">   26   </SPAN><A HREF=CalcPhat_types_h.html#type_RT_MODEL_CalcPhat TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_CalcPhat</FONT></A> *CalcPhat_M = &amp;CalcPhat_M_;
+<SPAN class="LineNumber">   27   </SPAN>
+<SPAN class="LineNumber">   28   </SPAN><SPAN class="Comment">/* Model step function */</SPAN>
+<SPAN class="LineNumber">   29   </SPAN><SPAN class="Datatype">void</SPAN> <A NAME=fcn_CalcPhat_step>CalcPhat_step</A>(<SPAN class="Datatype">void</SPAN>)
+<SPAN class="LineNumber">   30   </SPAN><B>{</B>
+<SPAN class="LineNumber">   31   </SPAN>  <SPAN class="Comment">/* Math: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/Math#-SP-#Function;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function</I></FONT></a>' incorporates:
+<SPAN class="LineNumber">   32   </SPAN>   *   Inport: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/fftIn2;"><FONT COLOR=#117755><I>&lt;Root&gt;/fftIn2</I></FONT></a>'
+<SPAN class="LineNumber">   33   </SPAN>   */</SPAN>                                  <SPAN class="Comment">/* Operator : conj */</SPAN>
+<SPAN class="LineNumber">   34   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   35   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i1;
+<SPAN class="LineNumber">   36   </SPAN>    <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *u0 = &amp;CalcPhat_U.fftIn2[0];
+<SPAN class="LineNumber">   37   </SPAN>    <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *y0 = CalcPhat_B.Divide;
+<SPAN class="LineNumber">   38   </SPAN>    <SPAN class="Keyword">for</SPAN> (i1=0; i1 &lt; 8192; i1++) <B>{</B>
+<SPAN class="LineNumber">   39   </SPAN>      y0[i1].re = u0[i1].re;
+<SPAN class="LineNumber">   40   </SPAN>      y0[i1].im = -u0[i1].im;
+<SPAN class="LineNumber">   41   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">   42   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   43   </SPAN>
+<SPAN class="LineNumber">   44   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   45   </SPAN>    <A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A> i;
+<SPAN class="LineNumber">   46   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 8192; i++) <B>{</B>
+<SPAN class="LineNumber">   47   </SPAN>      <SPAN class="Comment">/* Product: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/Prod;"><FONT COLOR=#117755><I>&lt;Root&gt;/Prod</I></FONT></a>' incorporates:
+<SPAN class="LineNumber">   48   </SPAN>       *  Inport: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/fftIn1;"><FONT COLOR=#117755><I>&lt;Root&gt;/fftIn1</I></FONT></a>'
+<SPAN class="LineNumber">   49   </SPAN>       */</SPAN>
+<SPAN class="LineNumber">   50   </SPAN>      CalcPhat_B.Prod[i].re = CalcPhat_U.fftIn1[i].re * CalcPhat_B.Divide[i].re
+<SPAN class="LineNumber">   51   </SPAN>        - CalcPhat_U.fftIn1[i].im * CalcPhat_B.Divide[i].im;
+<SPAN class="LineNumber">   52   </SPAN>      CalcPhat_B.Prod[i].im = CalcPhat_U.fftIn1[i].re * CalcPhat_B.Divide[i].im
+<SPAN class="LineNumber">   53   </SPAN>        + CalcPhat_U.fftIn1[i].im * CalcPhat_B.Divide[i].re;
+<SPAN class="LineNumber">   54   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">   55   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   56   </SPAN>
+<SPAN class="LineNumber">   57   </SPAN>  <SPAN class="Comment">/* Abs: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/Abs;"><FONT COLOR=#117755><I>&lt;Root&gt;/Abs</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   58   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   59   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i1;
+<SPAN class="LineNumber">   60   </SPAN>    <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *u0 = CalcPhat_B.Prod;
+<SPAN class="LineNumber">   61   </SPAN>    <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> *y0 = CalcPhat_B.IFFT;
+<SPAN class="LineNumber">   62   </SPAN>    <SPAN class="Keyword">for</SPAN> (i1=0; i1 &lt; 8192; i1++) <B>{</B>
+<SPAN class="LineNumber">   63   </SPAN>      y0[i1] = (<A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A>)sqrt( u0[i1].re*u0[i1].re + u0[i1].im*u0[i1].im );
+<SPAN class="LineNumber">   64   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">   65   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   66   </SPAN>
+<SPAN class="LineNumber">   67   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   68   </SPAN>    <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> output;
+<SPAN class="LineNumber">   69   </SPAN>
+<SPAN class="LineNumber">   70   </SPAN>    <B>{</B>
+<SPAN class="LineNumber">   71   </SPAN>      <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i1;
+<SPAN class="LineNumber">   72   </SPAN>      <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *u0 = CalcPhat_B.Prod;
+<SPAN class="LineNumber">   73   </SPAN>      <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> *u1 = CalcPhat_B.IFFT;
+<SPAN class="LineNumber">   74   </SPAN>      <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *y0 = CalcPhat_B.Divide;
+<SPAN class="LineNumber">   75   </SPAN>      <SPAN class="Keyword">for</SPAN> (i1=0; i1 &lt; 8192; i1++) <B>{</B>
+<SPAN class="LineNumber">   76   </SPAN>        output = u0[i1];
+<SPAN class="LineNumber">   77   </SPAN>        output.re = output.re / u1[i1];
+<SPAN class="LineNumber">   78   </SPAN>        output.im = output.im / u1[i1];
+<SPAN class="LineNumber">   79   </SPAN>        y0[i1] = output;
+<SPAN class="LineNumber">   80   </SPAN>      <B>}</B>
+<SPAN class="LineNumber">   81   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">   82   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   83   </SPAN>
+<SPAN class="LineNumber">   84   </SPAN>  <SPAN class="Comment">/* Signal Processing Blockset FFT (sdspfft2) - '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/IFFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   85   </SPAN>  <SPAN class="Comment">/* Complex input, real output,1 channels, 8192 rows, linear output order */</SPAN>
+<SPAN class="LineNumber">   86   </SPAN>  <SPAN class="Comment">/* Apply half-length algorithm to single real signal: */</SPAN>
+<SPAN class="LineNumber">   87   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   88   </SPAN>    <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *lastColIn = CalcPhat_B.Divide;<SPAN class="Comment">/* Point to last column of input */</SPAN>
+<SPAN class="LineNumber">   89   </SPAN>    <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> *lastColOut = CalcPhat_B.IFFT;<SPAN class="Comment">/* Point to last column of output */</SPAN>
+<SPAN class="LineNumber">   90   </SPAN>    MWDSP_Ifft_DblLen_TBL_C_Cbr_Oop((<A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *)lastColOut, lastColIn, 8192,
+<SPAN class="LineNumber">   91   </SPAN>      &amp;CalcPhat_P.IFFT_TwiddleTable[0], 1);
+<SPAN class="LineNumber">   92   </SPAN>    MWDSP_R2DIT_TBLS_C((<A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> *)lastColOut, 1, 4096, 4096,
+<SPAN class="LineNumber">   93   </SPAN>                       &amp;CalcPhat_P.IFFT_TwiddleTable[0], 2, 1);<SPAN class="Comment">/* Radix-2 DIT IFFT using TableSpeed twiddle computation */</SPAN>
+<SPAN class="LineNumber">   94   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">   95   </SPAN>
+<SPAN class="LineNumber">   96   </SPAN>  MWDSP_ScaleData_RR(CalcPhat_B.IFFT, 8192, 1.0/8192);
+<SPAN class="LineNumber">   97   </SPAN>
+<SPAN class="LineNumber">   98   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">   99   </SPAN>    <A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A> i;
+<SPAN class="LineNumber">  100   </SPAN>
+<SPAN class="LineNumber">  101   </SPAN>    <SPAN class="Comment">/* Outport: '<a href="matlab: rtwprivate rtwctags_hilite CalcPhat/phatOut;"><FONT COLOR=#117755><I>&lt;Root&gt;/phatOut</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">  102   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 201; i++) <B>{</B>
+<SPAN class="LineNumber">  103   </SPAN>      CalcPhat_Y.phatOut[i] = CalcPhat_B.IFFT[i+7991];
+<SPAN class="LineNumber">  104   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  105   </SPAN>
+<SPAN class="LineNumber">  106   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 200; i++) <B>{</B>
+<SPAN class="LineNumber">  107   </SPAN>      CalcPhat_Y.phatOut[i + 201] = CalcPhat_B.IFFT[i];
+<SPAN class="LineNumber">  108   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  109   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">  110   </SPAN><B>}</B>
+<SPAN class="LineNumber">  111   </SPAN>
+<SPAN class="LineNumber">  112   </SPAN><SPAN class="Comment">/* Model initialize function */</SPAN>
+<SPAN class="LineNumber">  113   </SPAN><SPAN class="Datatype">void</SPAN> <A NAME=fcn_CalcPhat_initialize>CalcPhat_initialize</A>(<SPAN class="Datatype">void</SPAN>)
+<SPAN class="LineNumber">  114   </SPAN><B>{</B>
+<SPAN class="LineNumber">  115   </SPAN>  <SPAN class="Comment">/* Registration code */</SPAN>
+<SPAN class="LineNumber">  116   </SPAN>
+<SPAN class="LineNumber">  117   </SPAN>  <SPAN class="Comment">/* initialize error status */</SPAN>
+<SPAN class="LineNumber">  118   </SPAN>  rtmSetErrorStatus(CalcPhat_M, (<SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> *)0);
+<SPAN class="LineNumber">  119   </SPAN>
+<SPAN class="LineNumber">  120   </SPAN>  <SPAN class="Comment">/* block I/O */</SPAN>
+<SPAN class="LineNumber">  121   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">  122   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i;
+<SPAN class="LineNumber">  123   </SPAN>    <SPAN class="Datatype">void</SPAN> *pVoidBlockIORegion;
+<SPAN class="LineNumber">  124   </SPAN>    pVoidBlockIORegion = (<SPAN class="Datatype">void</SPAN> *)(&amp;CalcPhat_B.Prod[0].re);
+<SPAN class="LineNumber">  125   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 40960; i++) <B>{</B>
+<SPAN class="LineNumber">  126   </SPAN>      ((<A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A>*)pVoidBlockIORegion)[i] = 0.0F;
+<SPAN class="LineNumber">  127   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  128   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">  129   </SPAN>
+<SPAN class="LineNumber">  130   </SPAN>  <SPAN class="Comment">/* external inputs */</SPAN>
+<SPAN class="LineNumber">  131   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">  132   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i;
+<SPAN class="LineNumber">  133   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 8192; i++) <B>{</B>
+<SPAN class="LineNumber">  134   </SPAN>      CalcPhat_U.fftIn1[i].re = 0.0F;
+<SPAN class="LineNumber">  135   </SPAN>      CalcPhat_U.fftIn1[i].im = 0.0F;
+<SPAN class="LineNumber">  136   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  137   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">  138   </SPAN>
+<SPAN class="LineNumber">  139   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">  140   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i;
+<SPAN class="LineNumber">  141   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 8192; i++) <B>{</B>
+<SPAN class="LineNumber">  142   </SPAN>      CalcPhat_U.fftIn2[i].re = 0.0F;
+<SPAN class="LineNumber">  143   </SPAN>      CalcPhat_U.fftIn2[i].im = 0.0F;
+<SPAN class="LineNumber">  144   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  145   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">  146   </SPAN>
+<SPAN class="LineNumber">  147   </SPAN>  <SPAN class="Comment">/* external outputs */</SPAN>
+<SPAN class="LineNumber">  148   </SPAN>  <B>{</B>
+<SPAN class="LineNumber">  149   </SPAN>    <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> i;
+<SPAN class="LineNumber">  150   </SPAN>    <SPAN class="Keyword">for</SPAN> (i = 0; i &lt; 401; i++) <B>{</B>
+<SPAN class="LineNumber">  151   </SPAN>      CalcPhat_Y.phatOut[i] = 0.0F;
+<SPAN class="LineNumber">  152   </SPAN>    <B>}</B>
+<SPAN class="LineNumber">  153   </SPAN>  <B>}</B>
+<SPAN class="LineNumber">  154   </SPAN><B>}</B>
+<SPAN class="LineNumber">  155   </SPAN>
+<SPAN class="LineNumber">  156   </SPAN><SPAN class="Comment">/* Model terminate function */</SPAN>
+<SPAN class="LineNumber">  157   </SPAN><SPAN class="Datatype">void</SPAN> <A NAME=fcn_CalcPhat_terminate>CalcPhat_terminate</A>(<SPAN class="Datatype">void</SPAN>)
+<SPAN class="LineNumber">  158   </SPAN><B>{</B>
+<SPAN class="LineNumber">  159   </SPAN>  <SPAN class="Comment">/* (no terminate code required) */</SPAN>
+<SPAN class="LineNumber">  160   </SPAN><B>}</B>
+<SPAN class="LineNumber">  161   </SPAN>
+<SPAN class="LineNumber">  162   </SPAN><SPAN class="Comment">/* File trailer for Real-Time Workshop generated code.
+<SPAN class="LineNumber">  163   </SPAN> *
+<SPAN class="LineNumber">  164   </SPAN> * [EOF]
+<SPAN class="LineNumber">  165   </SPAN> */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>

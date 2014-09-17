@@ -1,0 +1,458 @@
+import com.cycling74.max.*;
+import com.cycling74.jitter.*;
+import java.net.*;
+import java.awt.image.BufferedImage;
+import facetracker.*;
+import particlefilter.*;
+import shared.*;
+
+public class MaxFaceTracker extends MaxObject {
+
+    private final int[] sizes = new int[]                                
+    {40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 144, 160};  
+
+    private final double varianceThreshold = 500;
+
+    private final double threshold = 8d; // default detection threshold                
+
+    private final int[] RED    = new int[] {255,255,0,0}; 
+    private final int[] GREEN  = new int[] {255,0,255,0}; 
+    private final int[] YELLOW = new int[] {255,255,255,0}; 
+    private final int[] WHITE  = new int[] {255,255,255,255}; 
+
+    private final int RESIZE_FACTOR = 2;
+
+    private JitterMatrix fullres_jm, lowres_jm, skin_jm;
+    private int fullresWidth, fullresHeight, lowresWidth, lowresHeight;
+
+    private BufferedImage currentFrame, currentFrameFullRes;
+    private int[] offset = new int[2];
+    private int[] row;
+	        
+    private FaceState lastFaceState;
+    private double lastScore, lastVariance;
+
+    private FaceScorer scorer, scorerFullSize;
+    private FaceTracker faceTracker;
+  
+    private boolean detectorRunning, trackerRunning, enable;
+
+    private long detectorCounter, outputCounter;
+                                                                                
+    private final int MAX_NUM_FACES = 2; // maximum no. of faces to detect      
+    private Candidate[] faces = new Candidate[MAX_NUM_FACES];
+    private int num_faces = 0;   
+
+
+    public MaxFaceTracker(String xml, String xml_color) {
+
+	post("FD: Loading face-detection features " + xml);
+	post("FD: Loading skin-color features " + xml_color);
+	scorer = new FaceScorer(xml, xml_color);
+	scorerFullSize = new FaceScorer(xml, xml_color);
+
+	lowresWidth = 320;
+	lowresHeight = 240;
+	currentFrame = new BufferedImage(lowresWidth,lowresHeight,
+					 BufferedImage.TYPE_INT_ARGB);
+	scorer.loadImage(currentFrame, RESIZE_FACTOR);
+	
+	skin_jm = new JitterMatrix(1,"float32",lowresWidth/RESIZE_FACTOR,
+				   lowresHeight/RESIZE_FACTOR);
+
+	faceTracker = new FaceTracker(scorer, lowresWidth, lowresHeight);
+	faceTracker.setInitialFace(lowresWidth/2,lowresHeight/2,lowresWidth/8);
+
+	fullresWidth = 640;
+	fullresHeight = 480;
+	row = new int[fullresWidth * 4];
+
+	lastFaceState = null;
+	lastScore = -100;
+
+	detectorCounter = 0;
+	outputCounter = 0;
+
+
+	fullres_jm = new JitterMatrix();
+	lowres_jm  = new JitterMatrix();
+
+	trackerRunning = false;
+	detectorRunning = false;
+	enable = false;
+
+	declareIO(2,3);
+    }
+
+    public void start() {
+	reset();
+	enable = true;
+    }
+
+    public void stop() {
+	enable = false;
+    }
+
+    public void reset() {
+	while (trackerRunning) {}
+	faceTracker.setInitialFace(lowresWidth/2,lowresHeight/2,lowresWidth/8);
+    }
+
+    private void drawBox(int line_width) {
+
+	if (lastFaceState != null) {
+
+	    Particle[] particleVector = faceTracker.pv.getParticles();   
+	    
+	    for (int j=0;j<particleVector.length;j++) {
+		FaceParticle fp = (FaceParticle)particleVector[j];
+		if (!fp.isFixedParticle()) {
+		    FaceState s = (FaceState)fp.getCurrentState();
+		    double[] temp = s.getStateVector();
+		    int x = (int)temp[0] * fullresWidth / lowresWidth;
+		    int y = (int)temp[1] * fullresWidth / lowresWidth;
+		    fullres_jm.setcell(new int[] {x,y}, RED);
+		    fullres_jm.setcell(new int[] {x+1,y}, RED);
+		    fullres_jm.setcell(new int[] {x,y+1}, RED);
+		    fullres_jm.setcell(new int[] {x+1,y+1}, RED);
+		}
+	    }
+
+	 
+	    
+	    // read last location
+	    double[] vec = lastFaceState.getStateVector();
+	    int x = (int)(vec[0] - vec[2]/2);
+	    int y = (int)(vec[1] - vec[2]/2);
+	    int size = (int)(vec[2]);
+	
+	    // scale
+	    x = x * fullresWidth / lowresWidth;
+	    y = y * fullresHeight / lowresHeight;
+	    size = size * fullresWidth / lowresWidth;
+
+	    int xx,yy;
+	    
+	    int[] box_color;
+	    if (lastScore > 11d) box_color = RED;
+	    else if (lastScore > 8d) box_color = GREEN;
+	    else if (lastScore > 5d) box_color = YELLOW;
+	    else box_color = WHITE;
+	    
+
+	    for (int k=0;k<line_width;k++) {
+		
+		if (y+k >= 0 && y+k < fullresHeight) {
+   
+		    // top
+		    offset[0] = 0;
+		    offset[1] = y+k;
+	    
+		    fullres_jm.copyVectorToArray(0,offset,row,fullresWidth*4,0);
+		    for (int i=0;i<size;i++) {
+			xx = x+i;
+			if (xx >= 0 && xx < fullresWidth) {
+			    row[4*xx]   = box_color[0];
+			    row[4*xx+1] = box_color[1];
+			    row[4*xx+2] = box_color[2];
+			    row[4*xx+3] = box_color[3];
+			}
+		    }
+		    fullres_jm.copyArrayToVector(0,offset,row,fullresWidth*4,0);
+	    
+		}
+
+		if (y+size-1-k >= 0 && y+size-1-k < fullresHeight) {
+
+		    // bottom
+		    offset[0] = 0;
+		    offset[1] = y+size-1-k;
+		    
+		    fullres_jm.copyVectorToArray(0,offset,row,fullresWidth*4,0);
+		    for (int i=0;i<size;i++) {
+			xx = x+i;
+			if (xx >= 0 && xx < fullresWidth) {
+			    row[4*xx]   = box_color[0];
+			    row[4*xx+1] = box_color[1];
+			    row[4*xx+2] = box_color[2];
+			    row[4*xx+3] = box_color[3];
+			}
+		    }
+		    fullres_jm.copyArrayToVector(0,offset,row,fullresWidth*4,0);
+		    
+		}
+	    }
+
+	    // left & right
+	    for (int i=0;i<size;i++) {
+
+		if (y+i >= 0 && y+i < fullresHeight) {
+
+		    offset[0] = 0;
+		    offset[1] = y+i;
+		    fullres_jm.copyVectorToArray(0,offset,row,fullresWidth*4,0);
+		    
+		    for (int k=0;k<line_width;k++) {
+			for (int p=0;p<4;p++) {
+			    if (x+k >= 0 && x+k < fullresWidth) 
+				row[(x+k)*4 + p] = box_color[p];
+			    if (x+size-1-k >= 0 && x+size-1-k < fullresWidth)
+				row[(x+size-1-k)*4 + p] = box_color[p];
+			}
+		    }
+		    
+		    fullres_jm.copyArrayToVector(0,offset,row,fullresWidth*4,0);
+
+		}
+	    }    
+	}
+    }
+    
+
+    public void jit_matrix(String s) {
+
+	int inlet_no = getInlet();
+
+	// full res: 640 x 480
+	if (inlet_no == 0) {
+	    
+	    fullres_jm.frommatrix(s);
+	 
+	    int[] dim = fullres_jm.getDim();
+	    if (dim[0] != fullresWidth || dim[1] != fullresHeight) {
+		fullresWidth = dim[0];
+		fullresHeight = dim[1];
+		row = new int[fullresWidth * 4];
+	    }
+	    	    
+	    if (enable) {
+		drawBox(2);
+	    }
+	    
+
+	    outlet(0,"jit_matrix",fullres_jm.getName());
+
+	}
+
+	// low res: 320 x 240
+	else if (inlet_no == 1) {
+
+	    lowres_jm.frommatrix(s);
+	    
+	    int[] dim = lowres_jm.getDim();
+	    if (dim[0] != lowresWidth || dim[1] != lowresHeight) {
+		lowresWidth = dim[0];
+		lowresHeight = dim[1];
+		skin_jm = new JitterMatrix(1,"float32",
+					   lowresWidth/RESIZE_FACTOR,
+					   lowresHeight/RESIZE_FACTOR);
+		faceTracker = new FaceTracker(scorer, 
+					      lowresWidth, 
+					      lowresHeight);
+		faceTracker.setInitialFace(lowresWidth/2,
+					   lowresHeight/2,
+					   lowresWidth/8);
+	    }
+	    
+	    currentFrame = lowres_jm.createBufferedImage();
+	    
+	    // ~10 times / sec (based on 30 fps)
+	    if (outputCounter > 3) {
+		if (enable) {
+		    // output face event
+		    if (lastFaceState !=null) {
+			double[] vec = lastFaceState.getStateVector();
+			int x = (int)(vec[0]-vec[2]/2);
+			int y = (int)(vec[1]-vec[2]/2);
+			int size = (int)(vec[2]);
+			if (lastVariance < varianceThreshold &&
+			    lastScore > 0 && 
+			    vec[0] >=0 && vec[0] < lowresWidth && 
+			    vec[1] >=0 && vec[1] < lowresHeight && 
+			    size > 0) {
+			    Atom[] face_array = new Atom[4];
+			    Long current_time = new Long(System.currentTimeMillis());
+			    face_array[0] = Atom.newAtom(
+				new Integer(x * fullresWidth / lowresWidth));
+			    face_array[1] = Atom.newAtom(
+				new Integer(y * fullresHeight /  lowresHeight));
+			    face_array[2] = Atom.newAtom(
+				new Integer(size * fullresHeight /  lowresHeight));
+			    face_array[3] = Atom.newAtom(current_time.floatValue());
+			    outlet(2,"face",face_array);	
+			}
+		    }
+		}
+		outputCounter = 0;
+	    }
+
+	    // ~1 times / sec
+	    if (!detectorRunning && detectorCounter > 30) {
+		if (enable) {
+		    detectorRunning = true;
+		    Thread detectorThread = new DetectorThread();
+		    detectorThread.start();
+		}
+		detectorCounter = 0;
+	    }
+
+	    
+	    if (!trackerRunning) {
+		trackerRunning = true;
+		Thread trackerThread = new TrackerThread();
+		trackerThread.start();
+	    }
+	    
+	    detectorCounter++;
+	    outputCounter++;
+	    
+
+	}   
+    }
+
+
+    private double distanceFromCurrentFace(double x, double y, double size) {
+	double[] current = lastFaceState.getStateVector();
+	return (Math.pow(current[0]-x,2) + 
+		Math.pow(current[1]-y,2) +
+		Math.pow(current[2]-size,2));
+    }
+
+    
+    private class DetectorThread extends Thread {
+    public void run() {
+	
+	long start = System.currentTimeMillis();
+
+	Candidate[] temp_faces = new Candidate[MAX_NUM_FACES];
+	int num_temp_faces = 0;
+
+	scorerFullSize.loadImage(currentFrame, 2);
+	
+        detect:
+	for (int i=sizes.length-1; i >= 0; i--) {                           
+	    int SS = sizes[i]/sizes[0];                                     
+            
+	    // too many faces found                                         
+	    if (num_temp_faces >= MAX_NUM_FACES){                           
+		break detect;                                               
+	    }                                                               
+            
+            
+	    for (int y=0; y+sizes[i] < lowresHeight; y+= 3+SS ) {                     
+		for (int x=0; x+sizes[i] < lowresWidth; x+= 3+SS ) {                 
+		    Candidate c = new Candidate(x,y,sizes[i]);
+
+		    double score = scorerFullSize.getScore(c);    
+
+		    if (score > threshold) {                  
+			// weight by score and its size                     
+			c.weight = (int)score;                              
+			if (c.weight < 1) c.weight = 1;                     
+			
+			c.weight = c.weight * c.size;                       
+                        
+			// combine detections                               
+			boolean updated = false;                            
+			for (int j=0;j<num_temp_faces;j++) {                
+			    Candidate f = temp_faces[j];                    
+			    if (f.isSameDetection(c)) {                     
+				// Union                                    
+				f.x = Math.min(f.x,c.x);                    
+				f.y = Math.min(f.y,c.y);                    
+                                                                                
+				int temp_size_1 = Math.max(f.x+f.size,c.x+c.size) -
+				                  Math.min(f.x,c.x);                      
+				int temp_size_2 = Math.max(f.y+f.size,c.y+c.size) -
+				                  Math.min(f.y,c.y);                      
+                                                                                
+				f.size = Math.min(temp_size_1,temp_size_2); 
+                                                                                
+				updated = true;                             
+				break;                                      
+			    }                                               
+			}                                                   
+                                                                                
+			// a new face found                                 
+			if (!updated && num_temp_faces < MAX_NUM_FACES)     
+			    temp_faces[num_temp_faces++] = c;
+		    }                   
+		}                                                           
+	    }                                                               
+	}                  
+                
+	num_faces = num_temp_faces;
+	faces = temp_faces;
+
+	//post("DetectorThread time: " + (System.currentTimeMillis() - start));
+	//post("Faces = " + num_faces);
+
+
+	// control logic
+	if (lastVariance > varianceThreshold) {
+	    post("BAD: Tracker lost the face");
+	    if (num_faces > 0) {
+		post(">set Tracker");
+		//while (trackerRunning) {}
+		int x = faces[0].x + faces[0].size/2;
+		int y = faces[0].y + faces[0].size/2;
+		faceTracker.concentrateParticles(x,y,faces[0].size);
+	    }
+	}
+	else {
+	    if (num_faces > 0) {
+		double s = scorerFullSize.getScore(faces[0]);
+		int x = faces[0].x + faces[0].size/2;
+		int y = faces[0].y + faces[0].size/2;
+		double d = distanceFromCurrentFace(x,y,faces[0].size);
+		if (s > lastScore && d < 1000) {
+		    post("ADJUST: Detector has a better face");
+		    post(">set Tracker");
+		    //while (trackerRunning) {}
+		    faceTracker.concentrateParticles(x,y,faces[0].size);
+		}
+	    }
+	    
+	    if (lastScore < threshold) {
+		post("BAD: Tracker has low score face");
+	    }
+	    else {
+		post("GOOD: Tracker has a good face");
+	    }
+	}
+
+	detectorRunning = false;
+
+    }
+    }
+
+
+    private class TrackerThread extends Thread {
+    public void run() {
+
+	long start = System.currentTimeMillis();
+
+	// perform skin detect
+	scorer.loadImage(currentFrame,RESIZE_FACTOR);
+	skin_jm.copyArrayToMatrix(scorer.skinScore);
+	outlet(1,"jit_matrix",skin_jm.getName());
+
+	// update tracker
+	if (enable) {
+	    faceTracker.resampleAndUpdateWeights();
+	    lastFaceState = faceTracker.getWeightedAverageFaceState();
+	    lastVariance = faceTracker.getVariance();
+	    lastScore = scorer.getScore(lastFaceState);
+	    faceTracker.updateStates();
+
+	    //post("TrackerThread time: " + (System.currentTimeMillis() - start));
+	    //post("Variance = " + lastVariance);
+	}
+
+	trackerRunning = false;
+    }
+    }
+
+   
+
+}

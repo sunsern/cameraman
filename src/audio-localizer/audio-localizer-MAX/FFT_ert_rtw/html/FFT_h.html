@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - FFT.h </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/FFT.h" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/FFT.h</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: FFT.h
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Real-Time Workshop code generated for Simulink model FFT.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Model version                        : 1.3
+<SPAN class="LineNumber">    7   </SPAN> * Real-Time Workshop file version      : 6.5  (R2006b Beta)  21-Sep-2006
+<SPAN class="LineNumber">    8   </SPAN> * Real-Time Workshop file generated on : Wed Oct  8 13:32:53 2008
+<SPAN class="LineNumber">    9   </SPAN> * TLC version                          : 6.5 (Sep 20 2006)
+<SPAN class="LineNumber">   10   </SPAN> * C source code generated on           : Wed Oct  8 13:32:54 2008
+<SPAN class="LineNumber">   11   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _RTW_HEADER_FFT_h_
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> _RTW_HEADER_FFT_h_
+<SPAN class="LineNumber">   14   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _FFT_COMMON_INCLUDES_
+<SPAN class="LineNumber">   15   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> _FFT_COMMON_INCLUDES_
+<SPAN class="LineNumber">   16   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;math.h&gt;</FONT>
+<SPAN class="LineNumber">   17   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;stddef.h&gt;</FONT>
+<SPAN class="LineNumber">   18   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;rtwtypes.h&quot;</FONT>
+<SPAN class="LineNumber">   19   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _FFT_COMMON_INCLUDES_ */</SPAN>
+<SPAN class="LineNumber">   20   </SPAN>
+<SPAN class="LineNumber">   21   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;FFT_types.h&quot;</FONT>
+<SPAN class="LineNumber">   22   </SPAN>
+<SPAN class="LineNumber">   23   </SPAN><SPAN class="Comment">/* Macros for accessing real-time model data structure */</SPAN>
+<SPAN class="LineNumber">   24   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmGetErrorStatus
+<SPAN class="LineNumber">   25   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmGetErrorStatus(rtm)        ((rtm)-&gt;</FONT>errorStatus)
+<SPAN class="LineNumber">   26   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   27   </SPAN>
+<SPAN class="LineNumber">   28   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmSetErrorStatus
+<SPAN class="LineNumber">   29   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;</FONT>errorStatus = (val))
+<SPAN class="LineNumber">   30   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   31   </SPAN>
+<SPAN class="LineNumber">   32   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">   33   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   34   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT_l[8192];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite FFT/FFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   35   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad[8192];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite FFT/Zero#-SP-#Pad;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   36   </SPAN><B>}</B> <A NAME=type_BlockIO_FFT>BlockIO_FFT</A>;
+<SPAN class="LineNumber">   37   </SPAN>
+<SPAN class="LineNumber">   38   </SPAN><SPAN class="Comment">/* Constant parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">   39   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   40   </SPAN>  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">   41   </SPAN>   * '<a href="matlab: rtwprivate rtwctags_hilite FFT/FFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT</I></FONT></a>'
+<SPAN class="LineNumber">   42   </SPAN>   */</SPAN>
+<SPAN class="LineNumber">   43   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT_TwiddleTable[6144];
+<SPAN class="LineNumber">   44   </SPAN><B>}</B> <A NAME=type_ConstParam_FFT>ConstParam_FFT</A>;
+<SPAN class="LineNumber">   45   </SPAN>
+<SPAN class="LineNumber">   46   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   47   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   48   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> audioIn[8000];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite FFT/audioIn;"><FONT COLOR=#117755><I>&lt;Root&gt;/audioIn</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   49   </SPAN><B>}</B> <A NAME=type_ExternalInputs_FFT>ExternalInputs_FFT</A>;
+<SPAN class="LineNumber">   50   </SPAN>
+<SPAN class="LineNumber">   51   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   52   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   53   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> fftOut[8192];              <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite FFT/fftOut;"><FONT COLOR=#117755><I>&lt;Root&gt;/fftOut</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   54   </SPAN><B>}</B> <A NAME=type_ExternalOutputs_FFT>ExternalOutputs_FFT</A>;
+<SPAN class="LineNumber">   55   </SPAN>
+<SPAN class="LineNumber">   56   </SPAN><SPAN class="Comment">/* Real-time Model Data Structure */</SPAN>
+<SPAN class="LineNumber">   57   </SPAN><SPAN class="Keyword">struct</SPAN> <A HREF=FFT_types_h.html#type_RT_MODEL_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_FFT</FONT></A> <B>{</B>
+<SPAN class="LineNumber">   58   </SPAN>  <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> * <SPAN class="Datatype">volatile</SPAN> errorStatus;
+<SPAN class="LineNumber">   59   </SPAN><B>}</B>;
+<SPAN class="LineNumber">   60   </SPAN>
+<SPAN class="LineNumber">   61   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">   62   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=FFT_h.html#type_BlockIO_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_FFT</FONT></A> FFT_B;
+<SPAN class="LineNumber">   63   </SPAN>
+<SPAN class="LineNumber">   64   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   65   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=FFT_h.html#type_ExternalInputs_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalInputs_FFT</FONT></A> FFT_U;
+<SPAN class="LineNumber">   66   </SPAN>
+<SPAN class="LineNumber">   67   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   68   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=FFT_h.html#type_ExternalOutputs_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalOutputs_FFT</FONT></A> FFT_Y;
+<SPAN class="LineNumber">   69   </SPAN>
+<SPAN class="LineNumber">   70   </SPAN><SPAN class="Comment">/* Constant parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">   71   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">const</SPAN> <A HREF=FFT_h.html#type_ConstParam_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ConstParam_FFT</FONT></A> <A HREF=FFT_data_c.html#var_FFT_ConstP TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_ConstP</FONT></A>;
+<SPAN class="LineNumber">   72   </SPAN>
+<SPAN class="LineNumber">   73   </SPAN><SPAN class="Comment">/* Model entry point functions */</SPAN>
+<SPAN class="LineNumber">   74   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=FFT_c.html#fcn_FFT_initialize TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_initialize</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">   75   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=FFT_c.html#fcn_FFT_step TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_step</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">   76   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=FFT_c.html#fcn_FFT_terminate TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">FFT_terminate</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">   77   </SPAN>
+<SPAN class="LineNumber">   78   </SPAN><SPAN class="Comment">/* Real-time Model object */</SPAN>
+<SPAN class="LineNumber">   79   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=FFT_types_h.html#type_RT_MODEL_FFT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_FFT</FONT></A> *FFT_M;
+<SPAN class="LineNumber">   80   </SPAN>
+<SPAN class="LineNumber">   81   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">   82   </SPAN> * The generated code includes comments that allow you to trace directly
+<SPAN class="LineNumber">   83   </SPAN> * back to the appropriate location in the model.  The basic format
+<SPAN class="LineNumber">   84   </SPAN> * is &lt;system&gt;/block_name, where system is the system number (uniquely
+<SPAN class="LineNumber">   85   </SPAN> * assigned by Simulink) and block_name is the name of the block.
+<SPAN class="LineNumber">   86   </SPAN> *
+<SPAN class="LineNumber">   87   </SPAN> * Use the MATLAB hilite_system command to trace the generated code back
+<SPAN class="LineNumber">   88   </SPAN> * to the model.  For example,
+<SPAN class="LineNumber">   89   </SPAN> *
+<SPAN class="LineNumber">   90   </SPAN> * hilite_system('&lt;S3&gt;')    - opens system 3
+<SPAN class="LineNumber">   91   </SPAN> * hilite_system('&lt;S3&gt;/Kp') - opens and selects block Kp which resides in S3
+<SPAN class="LineNumber">   92   </SPAN> *
+<SPAN class="LineNumber">   93   </SPAN> * Here is the system hierarchy for this model
+<SPAN class="LineNumber">   94   </SPAN> *
+<SPAN class="LineNumber">   95   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite FFT;"><FONT COLOR=#117755><I>&lt;Root&gt;</I></FONT></a>' : FFT
+<SPAN class="LineNumber">   96   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   97   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _RTW_HEADER_FFT_h_ */</SPAN>
+<SPAN class="LineNumber">   98   </SPAN>
+<SPAN class="LineNumber">   99   </SPAN><SPAN class="Comment">/* File trailer for Real-Time Workshop generated code.
+<SPAN class="LineNumber">  100   </SPAN> *
+<SPAN class="LineNumber">  101   </SPAN> * [EOF]
+<SPAN class="LineNumber">  102   </SPAN> */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>

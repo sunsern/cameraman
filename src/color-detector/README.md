@@ -1,0 +1,1 @@
+'color-detector' is deprecated. The functionality has been integrated into 'face-tracker'.

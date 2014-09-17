@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<color_detector>
+<generate_time>Fri Nov 21 03:30:23 GMT-08:00 2008</generate_time>
+<stages>
+	<stage id="0">
+		<features>
+			<feature id="0" type="root">
+				<cond_true_val>-0.6093024707058219</cond_true_val>
+			</feature>
+			<feature id="1" type="HSV">
+				<_>S</_>
+				<threshold>0.3653270382312298</threshold>
+				<cond_true_val>-0.10507604637802852</cond_true_val>
+				<cond_false_val>-2.4690454626089084</cond_false_val>
+				<parent>0</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+		</features>
+		<stage_threshold>-1.9</stage_threshold>
+	</stage>
+	<stage id="1">
+		<features>
+			<feature id="2" type="HSV">
+				<_>H</_>
+				<threshold>0.5881428042915279</threshold>
+				<cond_true_val>-0.4805657040600001</cond_true_val>
+				<cond_false_val>1.0744370280102111</cond_false_val>
+				<parent>1</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="3" type="HSV">
+				<_>H</_>
+				<threshold>0.13753427340383861</threshold>
+				<cond_true_val>1.69871181676611</cond_true_val>
+				<cond_false_val>-1.0000841369101503</cond_false_val>
+				<parent>2</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="4" type="HSV">
+				<_>H</_>
+				<threshold>0.11746550472040668</threshold>
+				<cond_true_val>1.1719023468399676</cond_true_val>
+				<cond_false_val>-0.47777668848078875</cond_false_val>
+				<parent>2</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="5" type="HSV">
+				<_>S</_>
+				<threshold>0.17683316420490847</threshold>
+				<cond_true_val>0.9928027174375502</cond_true_val>
+				<cond_false_val>-0.024095990797665168</cond_false_val>
+				<parent>2</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="6" type="HSV">
+				<_>S</_>
+				<threshold>0.27791327913279135</threshold>
+				<cond_true_val>0.18249237596087642</cond_true_val>
+				<cond_false_val>-0.8497532947037018</cond_false_val>
+				<parent>0</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="7" type="HSV">
+				<_>S</_>
+				<threshold>0.07452198270612592</threshold>
+				<cond_true_val>1.020504624676911</cond_true_val>
+				<cond_false_val>-0.5363883443375504</cond_false_val>
+				<parent>3</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="8" type="HSV">
+				<_>H</_>
+				<threshold>0.5712948100588551</threshold>
+				<cond_true_val>-0.5581127125407017</cond_true_val>
+				<cond_false_val>0.9501826886642325</cond_false_val>
+				<parent>7</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="9" type="HSV">
+				<_>S</_>
+				<threshold>0.11373478301273116</threshold>
+				<cond_true_val>0.5680262793779199</cond_true_val>
+				<cond_false_val>0.12497027044836229</cond_false_val>
+				<parent>6</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="10" type="HSV">
+				<_>V</_>
+				<threshold>0.2960784435272217</threshold>
+				<cond_true_val>-1.048765219646989</cond_true_val>
+				<cond_false_val>0.6573475046611176</cond_false_val>
+				<parent>3</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="11" type="HSV">
+				<_>V</_>
+				<threshold>0.5156863033771515</threshold>
+				<cond_true_val>-0.17558247403246993</cond_true_val>
+				<cond_false_val>0.5909248543316734</cond_false_val>
+				<parent>2</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="12" type="HSV">
+				<_>S</_>
+				<threshold>0.46064010895471574</threshold>
+				<cond_true_val>-0.22936941853742768</cond_true_val>
+				<cond_false_val>-1.653996366971429</cond_false_val>
+				<parent>6</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="13" type="HSV">
+				<_>V</_>
+				<threshold>0.5313725769519806</threshold>
+				<cond_true_val>0.22189122139123788</cond_true_val>
+				<cond_false_val>-0.6233292863401085</cond_false_val>
+				<parent>8</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="14" type="HSV">
+				<_>H</_>
+				<threshold>0.5141908212560387</threshold>
+				<cond_true_val>-0.04971591144941398</cond_true_val>
+				<cond_false_val>0.5260184628071574</cond_false_val>
+				<parent>9</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="15" type="HSV">
+				<_>H</_>
+				<threshold>0.7004273504273504</threshold>
+				<cond_true_val>0.1314061518547191</cond_true_val>
+				<cond_false_val>-0.945520982830169</cond_false_val>
+				<parent>5</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="16" type="HSV">
+				<_>H</_>
+				<threshold>0.5939764492753623</threshold>
+				<cond_true_val>1.0274959597925797</cond_true_val>
+				<cond_false_val>0.04566742843169828</cond_false_val>
+				<parent>14</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="17" type="HSV">
+				<_>V</_>
+				<threshold>0.4372549057006836</threshold>
+				<cond_true_val>-0.2990905570990874</cond_true_val>
+				<cond_false_val>0.5956369691791769</cond_false_val>
+				<parent>3</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="18" type="HSV">
+				<_>S</_>
+				<threshold>0.22255689424364122</threshold>
+				<cond_true_val>0.021483314808108937</cond_true_val>
+				<cond_false_val>2.779297302502463</cond_false_val>
+				<parent>17</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="19" type="HSV">
+				<_>V</_>
+				<threshold>0.9980392158031464</threshold>
+				<cond_true_val>-0.566678925327683</cond_true_val>
+				<cond_false_val>0.4402178051913698</cond_false_val>
+				<parent>13</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+		</features>
+		<stage_threshold>-4.0</stage_threshold>
+	</stage>
+	<stage id="2">
+		<features>
+			<feature id="20" type="HSV">
+				<_>V</_>
+				<threshold>0.8176470696926117</threshold>
+				<cond_true_val>0.044284937040236214</cond_true_val>
+				<cond_false_val>-2.7989389314381827</cond_false_val>
+				<parent>19</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="21" type="HSV">
+				<_>H</_>
+				<threshold>0.5989141949152543</threshold>
+				<cond_true_val>-0.4219432277625831</cond_true_val>
+				<cond_false_val>0.4374437912063438</cond_false_val>
+				<parent>11</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="22" type="HSV">
+				<_>H</_>
+				<threshold>0.22481884057971013</threshold>
+				<cond_true_val>0.7731308830977508</cond_true_val>
+				<cond_false_val>0.08001938225193184</cond_false_val>
+				<parent>3</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="23" type="HSV">
+				<_>H</_>
+				<threshold>0.550351031154015</threshold>
+				<cond_true_val>-0.232804844528176</cond_true_val>
+				<cond_false_val>0.3718944377523134</cond_false_val>
+				<parent>22</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="24" type="HSV">
+				<_>S</_>
+				<threshold>0.24288606130711393</threshold>
+				<cond_true_val>0.08765633170669172</cond_true_val>
+				<cond_false_val>-0.283653416114455</cond_false_val>
+				<parent>0</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+		</features>
+		<stage_threshold>-3.13</stage_threshold>
+	</stage>
+	<stage id="3">
+		<features>
+			<feature id="25" type="HSV">
+				<_>S</_>
+				<threshold>0.21749194847020933</threshold>
+				<cond_true_val>0.5655415112645323</cond_true_val>
+				<cond_false_val>-0.06236619594185506</cond_false_val>
+				<parent>23</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="26" type="HSV">
+				<_>V</_>
+				<threshold>0.4176470637321472</threshold>
+				<cond_true_val>0.865196888473514</cond_true_val>
+				<cond_false_val>-0.43111043441453895</cond_false_val>
+				<parent>25</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="27" type="HSV">
+				<_>V</_>
+				<threshold>0.19411765038967133</threshold>
+				<cond_true_val>-0.7232539869671852</cond_true_val>
+				<cond_false_val>0.01453679444436175</cond_false_val>
+				<parent>0</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="28" type="HSV">
+				<_>S</_>
+				<threshold>0.26593891534084313</threshold>
+				<cond_true_val>0.30037217738462824</cond_true_val>
+				<cond_false_val>-0.8781723528069334</cond_false_val>
+				<parent>17</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="29" type="HSV">
+				<_>V</_>
+				<threshold>0.5274510085582733</threshold>
+				<cond_true_val>0.30105444606694887</cond_true_val>
+				<cond_false_val>-0.32705109632659296</cond_false_val>
+				<parent>14</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="30" type="HSV">
+				<_>S</_>
+				<threshold>0.054923507864684334</threshold>
+				<cond_true_val>0.37432183651697054</cond_true_val>
+				<cond_false_val>-0.2788061636332386</cond_false_val>
+				<parent>23</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="31" type="HSV">
+				<_>V</_>
+				<threshold>0.9176470637321472</threshold>
+				<cond_true_val>0.716203834443713</cond_true_val>
+				<cond_false_val>-1.275576548643642</cond_false_val>
+				<parent>30</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="32" type="HSV">
+				<_>H</_>
+				<threshold>0.696524064171123</threshold>
+				<cond_true_val>0.12043155188167086</cond_true_val>
+				<cond_false_val>-0.28145178777664953</cond_false_val>
+				<parent>9</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="33" type="HSV">
+				<_>H</_>
+				<threshold>0.5803392139988526</threshold>
+				<cond_true_val>-0.7639928636970682</cond_true_val>
+				<cond_false_val>0.5111836253372962</cond_false_val>
+				<parent>26</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="34" type="HSV">
+				<_>H</_>
+				<threshold>0.4812710437710438</threshold>
+				<cond_true_val>-0.5879618393869237</cond_true_val>
+				<cond_false_val>0.07677963129091707</cond_false_val>
+				<parent>30</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="35" type="HSV">
+				<_>H</_>
+				<threshold>0.16756272401433692</threshold>
+				<cond_true_val>0.61401158643254</cond_true_val>
+				<cond_false_val>0.11677942605946819</cond_false_val>
+				<parent>3</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="36" type="HSV">
+				<_>S</_>
+				<threshold>0.1490290346907994</threshold>
+				<cond_true_val>0.4705785929436748</cond_true_val>
+				<cond_false_val>-0.5204953918405452</cond_false_val>
+				<parent>34</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="37" type="HSV">
+				<_>H</_>
+				<threshold>0.7799145299145299</threshold>
+				<cond_true_val>-0.010988368194210035</cond_true_val>
+				<cond_false_val>-1.2823870880347132</cond_false_val>
+				<parent>24</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="38" type="HSV">
+				<_>V</_>
+				<threshold>0.16274510324001312</threshold>
+				<cond_true_val>-1.9913922308555376</cond_true_val>
+				<cond_false_val>0.07939675569701997</cond_false_val>
+				<parent>32</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="39" type="HSV">
+				<_>H</_>
+				<threshold>0.10040509259259259</threshold>
+				<cond_true_val>0.40384125019795675</cond_true_val>
+				<cond_false_val>-1.3315701845568693</cond_false_val>
+				<parent>28</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="40" type="HSV">
+				<_>V</_>
+				<threshold>0.34705883264541626</threshold>
+				<cond_true_val>-0.5138312173741357</cond_true_val>
+				<cond_false_val>0.14881523344512798</cond_false_val>
+				<parent>14</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="41" type="HSV">
+				<_>H</_>
+				<threshold>0.26506899055918665</threshold>
+				<cond_true_val>0.421863520774359</cond_true_val>
+				<cond_false_val>-0.6542892257852588</cond_false_val>
+				<parent>34</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="42" type="HSV">
+				<_>H</_>
+				<threshold>0.9182098765432098</threshold>
+				<cond_true_val>-0.1385984539715923</cond_true_val>
+				<cond_false_val>0.5167665446346085</cond_false_val>
+				<parent>5</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="43" type="HSV">
+				<_>H</_>
+				<threshold>0.6115664845173042</threshold>
+				<cond_true_val>-0.15472363987448842</cond_true_val>
+				<cond_false_val>0.3545932261862138</cond_false_val>
+				<parent>11</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="44" type="HSV">
+				<_>S</_>
+				<threshold>0.2019607843137255</threshold>
+				<cond_true_val>0.7378474980878569</cond_true_val>
+				<cond_false_val>-0.2804742482038292</cond_false_val>
+				<parent>19</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="45" type="HSV">
+				<_>V</_>
+				<threshold>0.38235294818878174</threshold>
+				<cond_true_val>0.7350243489796942</cond_true_val>
+				<cond_false_val>-0.6363512613841813</cond_false_val>
+				<parent>36</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="46" type="HSV">
+				<_>H</_>
+				<threshold>0.5342508798391152</threshold>
+				<cond_true_val>0.05517612641897892</cond_true_val>
+				<cond_false_val>1.1817671230572262</cond_false_val>
+				<parent>44</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="47" type="HSV">
+				<_>V</_>
+				<threshold>0.5549019873142242</threshold>
+				<cond_true_val>0.466338199529533</cond_true_val>
+				<cond_false_val>-0.10554145814064167</cond_false_val>
+				<parent>8</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="48" type="HSV">
+				<_>V</_>
+				<threshold>0.8333333432674408</threshold>
+				<cond_true_val>-0.5110252810625722</cond_true_val>
+				<cond_false_val>0.4066743522854851</cond_false_val>
+				<parent>47</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="49" type="HSV">
+				<_>S</_>
+				<threshold>0.06507622811970637</threshold>
+				<cond_true_val>-0.7527978454081532</cond_true_val>
+				<cond_false_val>0.10291990800754008</cond_false_val>
+				<parent>40</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="50" type="HSV">
+				<_>H</_>
+				<threshold>0.01844532279314888</threshold>
+				<cond_true_val>-1.7035298872755529</cond_true_val>
+				<cond_false_val>1.1692420546007303</cond_false_val>
+				<parent>39</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="51" type="HSV">
+				<_>V</_>
+				<threshold>0.2764706015586853</threshold>
+				<cond_true_val>-0.7045684525503435</cond_true_val>
+				<cond_false_val>0.4717608033826187</cond_false_val>
+				<parent>35</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="52" type="HSV">
+				<_>S</_>
+				<threshold>0.03746498599439776</threshold>
+				<cond_true_val>-1.9785313930483202</cond_true_val>
+				<cond_false_val>0.19054832756143386</cond_false_val>
+				<parent>31</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="53" type="HSV">
+				<_>S</_>
+				<threshold>0.041136180499597094</threshold>
+				<cond_true_val>0.48106242511429764</cond_true_val>
+				<cond_false_val>-0.20072674177203315</cond_false_val>
+				<parent>7</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="54" type="HSV">
+				<_>S</_>
+				<threshold>0.21549342731948942</threshold>
+				<cond_true_val>-0.05145794707922031</cond_true_val>
+				<cond_false_val>-1.9799939067630081</cond_false_val>
+				<parent>45</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="55" type="HSV">
+				<_>S</_>
+				<threshold>0.09761769710720364</threshold>
+				<cond_true_val>0.005977658048046705</cond_true_val>
+				<cond_false_val>-1.9766894473914753</cond_false_val>
+				<parent>41</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="56" type="HSV">
+				<_>V</_>
+				<threshold>0.25294119119644165</threshold>
+				<cond_true_val>-0.3428406335661429</cond_true_val>
+				<cond_false_val>0.09524824700399696</cond_false_val>
+				<parent>32</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="57" type="HSV">
+				<_>V</_>
+				<threshold>0.5921568870544434</threshold>
+				<cond_true_val>-0.1340457718624081</cond_true_val>
+				<cond_false_val>-1.5176861577714558</cond_false_val>
+				<parent>15</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="58" type="HSV">
+				<_>S</_>
+				<threshold>0.4036420913009838</threshold>
+				<cond_true_val>0.13849562134245125</cond_true_val>
+				<cond_false_val>-0.5337290742600854</cond_false_val>
+				<parent>6</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="59" type="HSV">
+				<_>H</_>
+				<threshold>0.6022079772079773</threshold>
+				<cond_true_val>0.2594290729968982</cond_true_val>
+				<cond_false_val>-0.10247948964050385</cond_false_val>
+				<parent>11</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="60" type="HSV">
+				<_>S</_>
+				<threshold>0.1217670011148272</threshold>
+				<cond_true_val>0.41778616063275353</cond_true_val>
+				<cond_false_val>0.02963828730156501</cond_false_val>
+				<parent>8</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="61" type="HSV">
+				<_>V</_>
+				<threshold>0.637254923582077</threshold>
+				<cond_true_val>-0.529065916639891</cond_true_val>
+				<cond_false_val>0.07051705404851788</cond_false_val>
+				<parent>29</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="62" type="HSV">
+				<_>S</_>
+				<threshold>0.026763336913712854</threshold>
+				<cond_true_val>2.0166924895605365</cond_true_val>
+				<cond_false_val>-0.5636347302202543</cond_false_val>
+				<parent>61</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="63" type="HSV">
+				<_>S</_>
+				<threshold>0.012087350277534326</threshold>
+				<cond_true_val>-0.9814734174087973</cond_true_val>
+				<cond_false_val>0.03314858045230339</cond_false_val>
+				<parent>24</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="64" type="HSV">
+				<_>V</_>
+				<threshold>0.4725490212440491</threshold>
+				<cond_true_val>-1.6383227922706731</cond_true_val>
+				<cond_false_val>-0.40080197804829404</cond_false_val>
+				<parent>33</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="65" type="HSV">
+				<_>V</_>
+				<threshold>0.8607843220233917</threshold>
+				<cond_true_val>-0.1138949261001027</cond_true_val>
+				<cond_false_val>-1.8313833131112496</cond_false_val>
+				<parent>63</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="66" type="HSV">
+				<_>S</_>
+				<threshold>0.182457092128625</threshold>
+				<cond_true_val>-0.20204618702505323</cond_true_val>
+				<cond_false_val>0.4730840626615742</cond_false_val>
+				<parent>22</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="67" type="HSV">
+				<_>V</_>
+				<threshold>0.44117647409439087</threshold>
+				<cond_true_val>-0.901728055865516</cond_true_val>
+				<cond_false_val>0.6808208221345691</cond_false_val>
+				<parent>66</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="68" type="HSV">
+				<_>V</_>
+				<threshold>0.4176470637321472</threshold>
+				<cond_true_val>0.24416959466623633</cond_true_val>
+				<cond_false_val>-0.04041116519128129</cond_false_val>
+				<parent>56</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="69" type="HSV">
+				<_>V</_>
+				<threshold>0.8607843220233917</threshold>
+				<cond_true_val>-0.09749453878811352</cond_true_val>
+				<cond_false_val>0.2651318756335578</cond_false_val>
+				<parent>68</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="70" type="HSV">
+				<_>S</_>
+				<threshold>0.23314472805874312</threshold>
+				<cond_true_val>0.36108270499950823</cond_true_val>
+				<cond_false_val>-0.33791040278446227</cond_false_val>
+				<parent>43</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="71" type="HSV">
+				<_>V</_>
+				<threshold>0.8450980484485626</threshold>
+				<cond_true_val>0.12784090450587537</cond_true_val>
+				<cond_false_val>-0.6073551605637497</cond_false_val>
+				<parent>12</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="72" type="HSV">
+				<_>H</_>
+				<threshold>0.14467592592592593</threshold>
+				<cond_true_val>1.558912380191799</cond_true_val>
+				<cond_false_val>-0.5663744203399665</cond_false_val>
+				<parent>71</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="73" type="HSV">
+				<_>H</_>
+				<threshold>0.6924603174603174</threshold>
+				<cond_true_val>-0.22458634034595393</cond_true_val>
+				<cond_false_val>1.598246918664716</cond_false_val>
+				<parent>56</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="74" type="HSV">
+				<_>H</_>
+				<threshold>0.9715544871794872</threshold>
+				<cond_true_val>-0.16348615634899863</cond_true_val>
+				<cond_false_val>1.5290768283468124</cond_false_val>
+				<parent>57</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="75" type="HSV">
+				<_>V</_>
+				<threshold>0.6176470816135406</threshold>
+				<cond_true_val>-0.13473361140139578</cond_true_val>
+				<cond_false_val>0.8082261969378012</cond_false_val>
+				<parent>35</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="76" type="HSV">
+				<_>H</_>
+				<threshold>0.015277777777777777</threshold>
+				<cond_true_val>1.4769675566025102</cond_true_val>
+				<cond_false_val>-0.3599084476814616</cond_false_val>
+				<parent>62</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="77" type="HSV">
+				<_>S</_>
+				<threshold>0.027334993773349935</threshold>
+				<cond_true_val>1.5457994768814398</cond_true_val>
+				<cond_false_val>-0.07514077582268623</cond_false_val>
+				<parent>59</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="78" type="HSV">
+				<_>S</_>
+				<threshold>0.2274977497749775</threshold>
+				<cond_true_val>0.27737858306833874</cond_true_val>
+				<cond_false_val>-0.12408685905038601</cond_false_val>
+				<parent>68</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="79" type="HSV">
+				<_>H</_>
+				<threshold>0.5785938903863432</threshold>
+				<cond_true_val>-0.2872283768017817</cond_true_val>
+				<cond_false_val>0.17652707211630506</cond_false_val>
+				<parent>71</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="80" type="HSV">
+				<_>S</_>
+				<threshold>0.18883971579961464</threshold>
+				<cond_true_val>0.8470626729378474</cond_true_val>
+				<cond_false_val>-1.669310288886737</cond_false_val>
+				<parent>57</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="81" type="HSV">
+				<_>V</_>
+				<threshold>0.1352941244840622</threshold>
+				<cond_true_val>-1.7303714419713638</cond_true_val>
+				<cond_false_val>-0.06420264111267159</cond_false_val>
+				<parent>27</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="82" type="HSV">
+				<_>H</_>
+				<threshold>0.15107808857808858</threshold>
+				<cond_true_val>1.0738175564110508</cond_true_val>
+				<cond_false_val>-0.30416129136238723</cond_false_val>
+				<parent>75</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="83" type="HSV">
+				<_>H</_>
+				<threshold>0.534280150416331</threshold>
+				<cond_true_val>-0.24089919057886575</cond_true_val>
+				<cond_false_val>0.24169163575351243</cond_false_val>
+				<parent>60</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="84" type="HSV">
+				<_>S</_>
+				<threshold>0.2003937007874016</threshold>
+				<cond_true_val>0.533548012065593</cond_true_val>
+				<cond_false_val>-0.2342033066473748</cond_false_val>
+				<parent>83</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="85" type="HSV">
+				<_>V</_>
+				<threshold>0.7588235437870026</threshold>
+				<cond_true_val>0.14814661147917202</cond_true_val>
+				<cond_false_val>-1.042074510851215</cond_false_val>
+				<parent>19</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="86" type="HSV">
+				<_>S</_>
+				<threshold>0.19223227752639518</threshold>
+				<cond_true_val>-0.35720265490538067</cond_true_val>
+				<cond_false_val>0.28979817752291254</cond_false_val>
+				<parent>83</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="87" type="HSV">
+				<_>V</_>
+				<threshold>0.33137255907058716</threshold>
+				<cond_true_val>1.0561336090456475</cond_true_val>
+				<cond_false_val>-0.04211887699703119</cond_false_val>
+				<parent>83</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="88" type="HSV">
+				<_>S</_>
+				<threshold>0.17923833746067866</threshold>
+				<cond_true_val>0.04946227578968363</cond_true_val>
+				<cond_false_val>1.0094817699401895</cond_false_val>
+				<parent>70</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="89" type="HSV">
+				<_>H</_>
+				<threshold>0.1294914317302377</threshold>
+				<cond_true_val>0.11826549290618067</cond_true_val>
+				<cond_false_val>-0.8170647490321176</cond_false_val>
+				<parent>10</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="90" type="HSV">
+				<_>V</_>
+				<threshold>0.42549020051956177</threshold>
+				<cond_true_val>0.0586272593032166</cond_true_val>
+				<cond_false_val>-0.19359923451323546</cond_false_val>
+				<parent>42</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="91" type="HSV">
+				<_>H</_>
+				<threshold>0.8623737373737373</threshold>
+				<cond_true_val>-0.13551671241348112</cond_true_val>
+				<cond_false_val>0.7627715743520502</cond_false_val>
+				<parent>90</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="92" type="HSV">
+				<_>H</_>
+				<threshold>0.6284965034965035</threshold>
+				<cond_true_val>-0.4975342807376355</cond_true_val>
+				<cond_false_val>0.38381557766320706</cond_false_val>
+				<parent>88</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="93" type="HSV">
+				<_>H</_>
+				<threshold>0.7385416666666667</threshold>
+				<cond_true_val>0.021819989039843057</cond_true_val>
+				<cond_false_val>-0.34404432861523354</cond_false_val>
+				<parent>91</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="94" type="HSV">
+				<_>V</_>
+				<threshold>0.7549019753932953</threshold>
+				<cond_true_val>0.18476358908863563</cond_true_val>
+				<cond_false_val>-0.3810114831271436</cond_false_val>
+				<parent>40</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="95" type="HSV">
+				<_>S</_>
+				<threshold>0.07197122302158274</threshold>
+				<cond_true_val>0.4853706965762673</cond_true_val>
+				<cond_false_val>-0.047509652856225486</cond_false_val>
+				<parent>94</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="96" type="HSV">
+				<_>V</_>
+				<threshold>0.44509804248809814</threshold>
+				<cond_true_val>0.4429229129860251</cond_true_val>
+				<cond_false_val>-0.3470251800080218</cond_false_val>
+				<parent>93</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="97" type="HSV">
+				<_>S</_>
+				<threshold>0.04181235431235431</threshold>
+				<cond_true_val>-0.6383243484302158</cond_true_val>
+				<cond_false_val>0.011614077697314523</cond_false_val>
+				<parent>42</parent>
+				<parent_cond>1</parent_cond>
+			</feature>
+			<feature id="98" type="HSV">
+				<_>H</_>
+				<threshold>0.6065740740740742</threshold>
+				<cond_true_val>0.22071589460139399</cond_true_val>
+				<cond_false_val>-0.19313348989485196</cond_false_val>
+				<parent>79</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="99" type="HSV">
+				<_>H</_>
+				<threshold>0.5896248812915479</threshold>
+				<cond_true_val>-0.3341482168452986</cond_true_val>
+				<cond_false_val>0.4430937305559197</cond_false_val>
+				<parent>1</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+			<feature id="100" type="HSV">
+				<_>S</_>
+				<threshold>0.5209800469483568</threshold>
+				<cond_true_val>0.49244381814696747</cond_true_val>
+				<cond_false_val>-1.7564905249035683</cond_false_val>
+				<parent>99</parent>
+				<parent_cond>-1</parent_cond>
+			</feature>
+		</features>
+		<stage_threshold>0.0</stage_threshold>
+	</stage>
+</stages>
+</color_detector>

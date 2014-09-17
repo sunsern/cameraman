@@ -1,0 +1,19 @@
+8
+
+dir
+440
+svn+ssh://seed.ucsd.edu/data/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/c74support/max-includes/win-includes/release
+svn+ssh://seed.ucsd.edu/data/cameraman
+
+
+
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+
+svn:special svn:externals svn:needs-lock
+
+CVS
+dir
+

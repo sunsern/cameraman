@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="MaxFaceTracker">
+    <property environment="env"/>
+    <property name="Detector-3.0.location" value="Detector-3.0"/>
+    <property name="ParticleFilter.location" value="ParticleFilter"/>
+    <property name="FaceTracker.location" value="FaceTracker"/>
+    <property name="FaceAlign.location" value="FaceAlign"/>
+    <property name="FaceRecognition.location" value="FaceRecognition"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="FaceRecognition.classpath">
+        <pathelement location="${FaceRecognition.location}/bin"/>
+    </path>
+    <path id="Detector-3.0.classpath">
+        <pathelement location="${Detector-3.0.location}/bin"/>
+    </path>
+    <path id="ParticleFilter.classpath">
+        <pathelement location="${ParticleFilter.location}/bin"/>
+    </path>
+    <path id="FaceTracker.classpath">
+        <pathelement location="${FaceTracker.location}/bin"/>
+        <path refid="Detector-3.0.classpath"/>
+        <path refid="ParticleFilter.classpath"/>
+    </path>
+    <path id="FaceAlign.classpath">
+        <pathelement location="bin"/>
+        <path refid="Detector-3.0.classpath"/>
+        <path refid="FaceTracker.classpath"/>
+        <path refid="ParticleFilter.classpath"/>
+    </path>
+    <path id="MaxFaceTracker.classpath">
+        <pathelement location="bin"/>
+        <path refid="Detector-3.0.classpath"/>
+        <path refid="FaceTracker.classpath"/>
+        <path refid="ParticleFilter.classpath"/>
+	<path refid="FaceAlign.classpath"/>
+	<path refid="FaceRecognition.classpath"/>
+	<pathelement location="/Applications/Max5/Cycling\ \'74/java/lib/max.jar"/>
+	<pathelement location="/Applications/Max5/Cycling\ \'74/java/lib/jitter.jar"/>
+    </path>
+
+    <target name="init">
+    </target>
+
+    <target name="clean">
+        <delete file="**.class"/>
+    </target>
+
+    <target depends="clean" name="cleanall">
+        <ant antfile="${Detector-3.0.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${ParticleFilter.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${FaceTracker.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${FaceAlign.location}/build.xml" inheritAll="false" target="clean"/>
+        <ant antfile="${FaceRecognition.location}/build.xml" inheritAll="false" target="clean"/>
+    </target>
+
+    <target depends="build-subprojects,build-project" name="build"/>
+
+    <target name="build-subprojects">
+        <ant antfile="${Detector-3.0.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="${ParticleFilter.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="${FaceTracker.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="${FaceAlign.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="${FaceRecognition.location}/build.xml" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+    </target>
+</project>

@@ -1,0 +1,52 @@
+8
+
+dir
+445
+svn+ssh://seed.ucsd.edu/data/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/cameracontroller.xcodeproj
+svn+ssh://seed.ucsd.edu/data/cameraman
+
+
+
+2008-07-14T20:56:01.665972Z
+442
+cameraman
+
+
+svn:special svn:externals svn:needs-lock
+
+cameraman.mode1v3
+file
+
+
+
+
+2008-07-09T23:23:25.000000Z
+ee63b2e055c78a021e84200cf5e95ad1
+2008-07-14T20:56:01.665972Z
+442
+cameraman
+
+project.pbxproj
+file
+
+
+
+
+2008-07-09T23:23:10.000000Z
+e4c8384a9fdc9310727d4667dc7aadf0
+2008-07-14T20:56:01.665972Z
+442
+cameraman
+
+cameraman.pbxuser
+file
+
+
+
+
+2008-07-09T23:23:25.000000Z
+a3386d0b7c579d9aaf9a319e6668b104
+2008-07-14T20:56:01.665972Z
+442
+cameraman
+

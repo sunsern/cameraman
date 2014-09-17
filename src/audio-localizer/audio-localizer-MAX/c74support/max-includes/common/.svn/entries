@@ -1,0 +1,91 @@
+8
+
+dir
+440
+svn+ssh://seed.ucsd.edu/data/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/c74support/max-includes/common
+svn+ssh://seed.ucsd.edu/data/cameraman
+
+
+
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+
+svn:special svn:externals svn:needs-lock
+
+ext_byteorder.c
+file
+
+
+
+
+2003-06-18T01:53:00.000000Z
+15e0f545d2022c996143d17b8a750ee0
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+commonsyms.c
+file
+
+
+
+
+2004-06-28T23:47:37.000000Z
+b00178b0fa35ced143c5bcc3c25bf6a8
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+verinfo_win.rc
+file
+
+
+
+
+2003-05-19T22:48:13.000000Z
+e95f2b8badc8a2cd6e1664c3088d2467
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+mouse.c
+file
+
+
+
+
+2003-05-19T22:48:13.000000Z
+2c07daa94754b57b745140e92aed09dc
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+CVS
+dir
+
+basic_c_strings.c
+file
+
+
+
+
+2003-09-30T08:19:46.000000Z
+49ce61e8cdc6d8cf73076e9248dedcff
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+dllmain_win.c
+file
+
+
+
+
+2004-07-09T06:02:17.000000Z
+3ad27e7c806e8fd9bf52581afd2db6ad
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+

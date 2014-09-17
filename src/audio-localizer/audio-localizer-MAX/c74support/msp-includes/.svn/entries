@@ -1,0 +1,108 @@
+8
+
+dir
+440
+svn+ssh://seed.ucsd.edu/data/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/c74support/msp-includes
+svn+ssh://seed.ucsd.edu/data/cameraman
+
+
+
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+
+svn:special svn:externals svn:needs-lock
+
+buffer.h
+file
+
+
+
+
+2004-02-27T06:46:58.000000Z
+831af44bd7782c1ccc9ead6e85cf18a8
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+win-includes
+dir
+
+z_dsp.h
+file
+
+
+
+
+2006-02-22T20:34:12.000000Z
+99585137abb2fc25e9edb89ef94c1bab
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+r_pfft.h
+file
+
+
+
+
+2004-02-27T06:46:58.000000Z
+899ea35f85d181da627354fd1278b804
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+z_altivec.h
+file
+
+
+
+
+2003-05-19T22:48:29.000000Z
+e7886501017b53666ff6c1f88f91a8aa
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+MaxAudioAPI.h
+file
+
+
+
+
+2005-11-17T20:46:35.000000Z
+3f9ffe36cd737e36bf8174f6d3c9c5e3
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+
+MaxAudioLib.stub
+file
+
+
+
+
+2004-06-29T01:55:35.000000Z
+defa5de36823a7818704becb45b076cc
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+has-props
+
+CVS
+dir
+
+MaxAudio.lib
+file
+
+
+
+
+2006-01-13T06:27:57.000000Z
+3368d0ad5edf30c05a0e7a57313264e8
+2008-06-05T22:54:45.968905Z
+425
+cameraman
+has-props
+

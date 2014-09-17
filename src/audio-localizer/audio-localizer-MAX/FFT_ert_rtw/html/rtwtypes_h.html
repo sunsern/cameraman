@@ -1,0 +1,237 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - rtwtypes.h </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/rtwtypes.h" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/FFT_ert_rtw/rtwtypes.h</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: rtwtypes.h
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Definitions required by Real-Time Workshop generated code.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Real-Time Workshop version: 6.5
+<SPAN class="LineNumber">    7   </SPAN> * Generated on: 2008-10-08 13:32:55
+<SPAN class="LineNumber">    8   </SPAN> */</SPAN>
+<SPAN class="LineNumber">    9   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> __RTWTYPES_H__
+<SPAN class="LineNumber">   10   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> __RTWTYPES_H__
+<SPAN class="LineNumber">   11   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> TRUE
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> TRUE                          (1U)
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   14   </SPAN>
+<SPAN class="LineNumber">   15   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> FALSE
+<SPAN class="LineNumber">   16   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> FALSE                         (0U)
+<SPAN class="LineNumber">   17   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   18   </SPAN>
+<SPAN class="LineNumber">   19   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> __TMWTYPES__
+<SPAN class="LineNumber">   20   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> __TMWTYPES__
+<SPAN class="LineNumber">   21   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;limits.h&gt;</FONT>
+<SPAN class="LineNumber">   22   </SPAN>
+<SPAN class="LineNumber">   23   </SPAN><SPAN class="Comment">/*=======================================================================*
+<SPAN class="LineNumber">   24   </SPAN> * Target hardware information
+<SPAN class="LineNumber">   25   </SPAN> *   Device type: 32-bit Generic
+<SPAN class="LineNumber">   26   </SPAN> *   Number of bits:     char:   8    short:   16    int:  32
+<SPAN class="LineNumber">   27   </SPAN> *                       long:  32      native word size:  32
+<SPAN class="LineNumber">   28   </SPAN> *   Byte ordering: Unspecified
+<SPAN class="LineNumber">   29   </SPAN> *   Signed integer division rounds to: Undefined
+<SPAN class="LineNumber">   30   </SPAN> *   Shift right on a signed integer as arithmetic shift: on
+<SPAN class="LineNumber">   31   </SPAN> *=======================================================================*/</SPAN>
+<SPAN class="LineNumber">   32   </SPAN>
+<SPAN class="LineNumber">   33   </SPAN><SPAN class="Comment">/* This ID is used to detect inclusion of an incompatible rtwtypes.h */</SPAN>
+<SPAN class="LineNumber">   34   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> RTWTYPES_ID_C08S16I32L32N32F1
+<SPAN class="LineNumber">   35   </SPAN>
+<SPAN class="LineNumber">   36   </SPAN><SPAN class="Comment">/*=======================================================================*
+<SPAN class="LineNumber">   37   </SPAN> * Fixed width word size data types:                                     *
+<SPAN class="LineNumber">   38   </SPAN> *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *
+<SPAN class="LineNumber">   39   </SPAN> *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *
+<SPAN class="LineNumber">   40   </SPAN> *   real32_T, real64_T           - 32 and 64 bit floating point numbers *
+<SPAN class="LineNumber">   41   </SPAN> *=======================================================================*/</SPAN>
+<SPAN class="LineNumber">   42   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">signed</SPAN> <SPAN class="Datatype">char</SPAN> <A NAME=type_int8_T>int8_T</A>;
+<SPAN class="LineNumber">   43   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">unsigned</SPAN> <SPAN class="Datatype">char</SPAN> <A NAME=type_uint8_T>uint8_T</A>;
+<SPAN class="LineNumber">   44   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">short</SPAN> <A NAME=type_int16_T>int16_T</A>;
+<SPAN class="LineNumber">   45   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">unsigned</SPAN> <SPAN class="Datatype">short</SPAN> <A NAME=type_uint16_T>uint16_T</A>;
+<SPAN class="LineNumber">   46   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">int</SPAN> <A NAME=type_int32_T>int32_T</A>;
+<SPAN class="LineNumber">   47   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">unsigned</SPAN> <SPAN class="Datatype">int</SPAN> <A NAME=type_uint32_T>uint32_T</A>;
+<SPAN class="LineNumber">   48   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">float</SPAN> <A NAME=type_real32_T>real32_T</A>;
+<SPAN class="LineNumber">   49   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">double</SPAN> <A NAME=type_real64_T>real64_T</A>;
+<SPAN class="LineNumber">   50   </SPAN>
+<SPAN class="LineNumber">   51   </SPAN><SPAN class="Comment">/*===========================================================================*
+<SPAN class="LineNumber">   52   </SPAN> * Generic type definitions: real_T, time_T, boolean_T, char_T, int_T,       *
+<SPAN class="LineNumber">   53   </SPAN> *                           uint_T and byte_T.                              *
+<SPAN class="LineNumber">   54   </SPAN> *===========================================================================*/</SPAN>
+<SPAN class="LineNumber">   55   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">double</SPAN> <A NAME=type_real_T>real_T</A>;
+<SPAN class="LineNumber">   56   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">double</SPAN> <A NAME=type_time_T>time_T</A>;
+<SPAN class="LineNumber">   57   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">unsigned</SPAN> <SPAN class="Datatype">char</SPAN> <A NAME=type_boolean_T>boolean_T</A>;
+<SPAN class="LineNumber">   58   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">int</SPAN> <A NAME=type_int_T>int_T</A>;
+<SPAN class="LineNumber">   59   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">unsigned</SPAN> <SPAN class="Datatype">int</SPAN> <A NAME=type_uint_T>uint_T</A>;
+<SPAN class="LineNumber">   60   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">char</SPAN> <A NAME=type_char_T>char_T</A>;
+<SPAN class="LineNumber">   61   </SPAN><SPAN class="Keyword">typedef</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> <A NAME=type_byte_T>byte_T</A>;
+<SPAN class="LineNumber">   62   </SPAN>
+<SPAN class="LineNumber">   63   </SPAN><SPAN class="Comment">/*===========================================================================*
+<SPAN class="LineNumber">   64   </SPAN> * Complex number type definitions                                           *
+<SPAN class="LineNumber">   65   </SPAN> *===========================================================================*/</SPAN>
+<SPAN class="LineNumber">   66   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> CREAL_T
+<SPAN class="LineNumber">   67   </SPAN>
+<SPAN class="LineNumber">   68   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   69   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> re;
+<SPAN class="LineNumber">   70   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> im;
+<SPAN class="LineNumber">   71   </SPAN><B>}</B> <A NAME=type_creal32_T>creal32_T</A>;
+<SPAN class="LineNumber">   72   </SPAN>
+<SPAN class="LineNumber">   73   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   74   </SPAN>  <A HREF=rtwtypes_h.html#type_real64_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real64_T</FONT></A> re;
+<SPAN class="LineNumber">   75   </SPAN>  <A HREF=rtwtypes_h.html#type_real64_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real64_T</FONT></A> im;
+<SPAN class="LineNumber">   76   </SPAN><B>}</B> <A NAME=type_creal64_T>creal64_T</A>;
+<SPAN class="LineNumber">   77   </SPAN>
+<SPAN class="LineNumber">   78   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   79   </SPAN>  <A HREF=rtwtypes_h.html#type_real_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real_T</FONT></A> re;
+<SPAN class="LineNumber">   80   </SPAN>  <A HREF=rtwtypes_h.html#type_real_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real_T</FONT></A> im;
+<SPAN class="LineNumber">   81   </SPAN><B>}</B> <A NAME=type_creal_T>creal_T</A>;
+<SPAN class="LineNumber">   82   </SPAN>
+<SPAN class="LineNumber">   83   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   84   </SPAN>  <A HREF=rtwtypes_h.html#type_int8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int8_T</FONT></A> re;
+<SPAN class="LineNumber">   85   </SPAN>  <A HREF=rtwtypes_h.html#type_int8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int8_T</FONT></A> im;
+<SPAN class="LineNumber">   86   </SPAN><B>}</B> <A NAME=type_cint8_T>cint8_T</A>;
+<SPAN class="LineNumber">   87   </SPAN>
+<SPAN class="LineNumber">   88   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   89   </SPAN>  <A HREF=rtwtypes_h.html#type_uint8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint8_T</FONT></A> re;
+<SPAN class="LineNumber">   90   </SPAN>  <A HREF=rtwtypes_h.html#type_uint8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint8_T</FONT></A> im;
+<SPAN class="LineNumber">   91   </SPAN><B>}</B> <A NAME=type_cuint8_T>cuint8_T</A>;
+<SPAN class="LineNumber">   92   </SPAN>
+<SPAN class="LineNumber">   93   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   94   </SPAN>  <A HREF=rtwtypes_h.html#type_int16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int16_T</FONT></A> re;
+<SPAN class="LineNumber">   95   </SPAN>  <A HREF=rtwtypes_h.html#type_int16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int16_T</FONT></A> im;
+<SPAN class="LineNumber">   96   </SPAN><B>}</B> <A NAME=type_cint16_T>cint16_T</A>;
+<SPAN class="LineNumber">   97   </SPAN>
+<SPAN class="LineNumber">   98   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   99   </SPAN>  <A HREF=rtwtypes_h.html#type_uint16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint16_T</FONT></A> re;
+<SPAN class="LineNumber">  100   </SPAN>  <A HREF=rtwtypes_h.html#type_uint16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint16_T</FONT></A> im;
+<SPAN class="LineNumber">  101   </SPAN><B>}</B> <A NAME=type_cuint16_T>cuint16_T</A>;
+<SPAN class="LineNumber">  102   </SPAN>
+<SPAN class="LineNumber">  103   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">  104   </SPAN>  <A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A> re;
+<SPAN class="LineNumber">  105   </SPAN>  <A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A> im;
+<SPAN class="LineNumber">  106   </SPAN><B>}</B> <A NAME=type_cint32_T>cint32_T</A>;
+<SPAN class="LineNumber">  107   </SPAN>
+<SPAN class="LineNumber">  108   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">  109   </SPAN>  <A HREF=rtwtypes_h.html#type_uint32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint32_T</FONT></A> re;
+<SPAN class="LineNumber">  110   </SPAN>  <A HREF=rtwtypes_h.html#type_uint32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint32_T</FONT></A> im;
+<SPAN class="LineNumber">  111   </SPAN><B>}</B> <A NAME=type_cuint32_T>cuint32_T</A>;
+<SPAN class="LineNumber">  112   </SPAN>
+<SPAN class="LineNumber">  113   </SPAN><SPAN class="Comment">/*=======================================================================*
+<SPAN class="LineNumber">  114   </SPAN> * Min and Max:                                                          *
+<SPAN class="LineNumber">  115   </SPAN> *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *
+<SPAN class="LineNumber">  116   </SPAN> *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *
+<SPAN class="LineNumber">  117   </SPAN> *=======================================================================*/</SPAN>
+<SPAN class="LineNumber">  118   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_int8_T                     ((<A HREF=rtwtypes_h.html#type_int8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int8_T</FONT></A>)(127))
+<SPAN class="LineNumber">  119   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_int8_T                     ((<A HREF=rtwtypes_h.html#type_int8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int8_T</FONT></A>)(-128))
+<SPAN class="LineNumber">  120   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_uint8_T                    ((<A HREF=rtwtypes_h.html#type_uint8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint8_T</FONT></A>)(255))
+<SPAN class="LineNumber">  121   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_uint8_T                    ((<A HREF=rtwtypes_h.html#type_uint8_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint8_T</FONT></A>)(0))
+<SPAN class="LineNumber">  122   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_int16_T                    ((<A HREF=rtwtypes_h.html#type_int16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int16_T</FONT></A>)(32767))
+<SPAN class="LineNumber">  123   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_int16_T                    ((<A HREF=rtwtypes_h.html#type_int16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int16_T</FONT></A>)(-32768))
+<SPAN class="LineNumber">  124   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_uint16_T                   ((<A HREF=rtwtypes_h.html#type_uint16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint16_T</FONT></A>)(65535))
+<SPAN class="LineNumber">  125   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_uint16_T                   ((<A HREF=rtwtypes_h.html#type_uint16_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint16_T</FONT></A>)(0))
+<SPAN class="LineNumber">  126   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_int32_T                    ((<A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A>)(2147483647))
+<SPAN class="LineNumber">  127   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_int32_T                    ((<A HREF=rtwtypes_h.html#type_int32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int32_T</FONT></A>)(-2147483647-1))
+<SPAN class="LineNumber">  128   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MAX_uint32_T                   ((<A HREF=rtwtypes_h.html#type_uint32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint32_T</FONT></A>)(0xFFFFFFFFU))
+<SPAN class="LineNumber">  129   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> MIN_uint32_T                   ((<A HREF=rtwtypes_h.html#type_uint32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">uint32_T</FONT></A>)(0))
+<SPAN class="LineNumber">  130   </SPAN>
+<SPAN class="LineNumber">  131   </SPAN><SPAN class="Comment">/* Logical type definitions */</SPAN>
+<SPAN class="LineNumber">  132   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">if</SPAN> !<SPAN class="PreProcessor">defined</SPAN>(__cplusplus) &amp;&amp; !<SPAN class="PreProcessor">defined</SPAN>(__true_false_are_keywords)
+<SPAN class="LineNumber">  133   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">ifndef</SPAN> false
+<SPAN class="LineNumber">  134   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> false                         (0U)
+<SPAN class="LineNumber">  135   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">  136   </SPAN>
+<SPAN class="LineNumber">  137   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">ifndef</SPAN> true
+<SPAN class="LineNumber">  138   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> true                          (1U)
+<SPAN class="LineNumber">  139   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">  140   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">  141   </SPAN>
+<SPAN class="LineNumber">  142   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">  143   </SPAN> * Real-Time Workshop assumes the code is compiled on a target using a 2's compliment representation
+<SPAN class="LineNumber">  144   </SPAN> * for signed integer values.
+<SPAN class="LineNumber">  145   </SPAN> */</SPAN>
+<SPAN class="LineNumber">  146   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">if</SPAN> ((SCHAR_MIN + 1) != -SCHAR_MAX)
+<SPAN class="LineNumber">  147   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">error</SPAN> <FONT COLOR=#992211>&quot;This code must be compiled using a 2's complement representation for signed integer values&quot;</FONT>
+<SPAN class="LineNumber">  148   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">  149   </SPAN>
+<SPAN class="LineNumber">  150   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">  151   </SPAN> * Maximum length of a MATLAB identifier (function/variable/model)
+<SPAN class="LineNumber">  152   </SPAN> * including the null-termination character. Referenced by
+<SPAN class="LineNumber">  153   </SPAN> * rt_logging.c and rt_matrx.c.
+<SPAN class="LineNumber">  154   </SPAN> */</SPAN>
+<SPAN class="LineNumber">  155   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> TMW_NAME_LENGTH_MAX            64
+<SPAN class="LineNumber">  156   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">else</SPAN>                                  <SPAN class="Comment">/* __TMWTYPES__ */</SPAN>
+<SPAN class="LineNumber">  157   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> TMWTYPES_PREVIOUSLY_INCLUDED
+<SPAN class="LineNumber">  158   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* __TMWTYPES__ */</SPAN>
+<SPAN class="LineNumber">  159   </SPAN>
+<SPAN class="LineNumber">  160   </SPAN><SPAN class="Comment">/* Block D-Work pointer type */</SPAN>
+<SPAN class="LineNumber">  161   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Datatype">void</SPAN> * <A NAME=type_pointer_T>pointer_T</A>;
+<SPAN class="LineNumber">  162   </SPAN>
+<SPAN class="LineNumber">  163   </SPAN><SPAN class="Comment">/* Simulink specific types */</SPAN>
+<SPAN class="LineNumber">  164   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> __SIMSTRUC_TYPES_H__
+<SPAN class="LineNumber">  165   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> __SIMSTRUC_TYPES_H__
+<SPAN class="LineNumber">  166   </SPAN>
+<SPAN class="LineNumber">  167   </SPAN><SPAN class="Comment">/* States of an enabled subsystem */</SPAN>
+<SPAN class="LineNumber">  168   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">enum</SPAN> <B>{</B>
+<SPAN class="LineNumber">  169   </SPAN>  SUBSYS_DISABLED = 0,
+<SPAN class="LineNumber">  170   </SPAN>  SUBSYS_ENABLED = 2,
+<SPAN class="LineNumber">  171   </SPAN>  SUBSYS_BECOMING_DISABLED = 4,
+<SPAN class="LineNumber">  172   </SPAN>  SUBSYS_BECOMING_ENABLED = 8,
+<SPAN class="LineNumber">  173   </SPAN>  SUBSYS_TRIGGERED = 16
+<SPAN class="LineNumber">  174   </SPAN><B>}</B> <A NAME=type_CondStates>CondStates</A>;
+<SPAN class="LineNumber">  175   </SPAN>
+<SPAN class="LineNumber">  176   </SPAN><SPAN class="Comment">/* Trigger directions: falling, either, and rising */</SPAN>
+<SPAN class="LineNumber">  177   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">enum</SPAN> <B>{</B>
+<SPAN class="LineNumber">  178   </SPAN>  FALLING_ZERO_CROSSING = -1,
+<SPAN class="LineNumber">  179   </SPAN>  ANY_ZERO_CROSSING = 0,
+<SPAN class="LineNumber">  180   </SPAN>  RISING_ZERO_CROSSING = 1
+<SPAN class="LineNumber">  181   </SPAN><B>}</B> <A NAME=type_ZCDirection>ZCDirection</A>;
+<SPAN class="LineNumber">  182   </SPAN>
+<SPAN class="LineNumber">  183   </SPAN><SPAN class="Comment">/* Previous state of a trigger signal */</SPAN>
+<SPAN class="LineNumber">  184   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">enum</SPAN> <B>{</B>
+<SPAN class="LineNumber">  185   </SPAN>  NEG_ZCSIG = -1,
+<SPAN class="LineNumber">  186   </SPAN>  ZERO_ZCSIG = 0,
+<SPAN class="LineNumber">  187   </SPAN>  POS_ZCSIG = 1,
+<SPAN class="LineNumber">  188   </SPAN>  ZERO_RISING_EV_ZCSIG = 100,          <SPAN class="Comment">/* zero and had a rising event  */</SPAN>
+<SPAN class="LineNumber">  189   </SPAN>  ZERO_FALLING_EV_ZCSIG = 101,         <SPAN class="Comment">/* zero and had a falling event */</SPAN>
+<SPAN class="LineNumber">  190   </SPAN>  UNINITIALIZED_ZCSIG = INT_MAX
+<SPAN class="LineNumber">  191   </SPAN><B>}</B> <A NAME=type_ZCSigState>ZCSigState</A>;
+<SPAN class="LineNumber">  192   </SPAN>
+<SPAN class="LineNumber">  193   </SPAN><SPAN class="Comment">/* Current state of a trigger signal */</SPAN>
+<SPAN class="LineNumber">  194   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">enum</SPAN> <B>{</B>
+<SPAN class="LineNumber">  195   </SPAN>  FALLING_ZCEVENT = -1,
+<SPAN class="LineNumber">  196   </SPAN>  NO_ZCEVENT = 0,
+<SPAN class="LineNumber">  197   </SPAN>  RISING_ZCEVENT = 1
+<SPAN class="LineNumber">  198   </SPAN><B>}</B> <A NAME=type_ZCEventType>ZCEventType</A>;
+<SPAN class="LineNumber">  199   </SPAN>
+<SPAN class="LineNumber">  200   </SPAN><SPAN class="Comment">/* Enumeration of built-in data types */</SPAN>
+<SPAN class="LineNumber">  201   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">enum</SPAN> <B>{</B>
+<SPAN class="LineNumber">  202   </SPAN>  SS_DOUBLE = 0,                       <SPAN class="Comment">/* real_T    */</SPAN>
+<SPAN class="LineNumber">  203   </SPAN>  SS_SINGLE = 1,                       <SPAN class="Comment">/* real32_T  */</SPAN>
+<SPAN class="LineNumber">  204   </SPAN>  SS_INT8 = 2,                         <SPAN class="Comment">/* int8_T    */</SPAN>
+<SPAN class="LineNumber">  205   </SPAN>  SS_UINT8 = 3,                        <SPAN class="Comment">/* uint8_T   */</SPAN>
+<SPAN class="LineNumber">  206   </SPAN>  SS_INT16 = 4,                        <SPAN class="Comment">/* int16_T   */</SPAN>
+<SPAN class="LineNumber">  207   </SPAN>  SS_UINT16 = 5,                       <SPAN class="Comment">/* uint16_T  */</SPAN>
+<SPAN class="LineNumber">  208   </SPAN>  SS_INT32 = 6,                        <SPAN class="Comment">/* int32_T   */</SPAN>
+<SPAN class="LineNumber">  209   </SPAN>  SS_UINT32 = 7,                       <SPAN class="Comment">/* uint32_T  */</SPAN>
+<SPAN class="LineNumber">  210   </SPAN>  SS_BOOLEAN = 8                       <SPAN class="Comment">/* boolean_T */</SPAN>
+<SPAN class="LineNumber">  211   </SPAN><B>}</B> <A NAME=type_BuiltInDTypeId>BuiltInDTypeId</A>;
+<SPAN class="LineNumber">  212   </SPAN>
+<SPAN class="LineNumber">  213   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> SS_NUM_BUILT_IN_DTYPE          ((<A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A>)SS_BOOLEAN+1)
+<SPAN class="LineNumber">  214   </SPAN>
+<SPAN class="LineNumber">  215   </SPAN><SPAN class="Keyword">typedef</SPAN> <A HREF=rtwtypes_h.html#type_int_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">int_T</FONT></A> <A NAME=type_DTypeId>DTypeId</A>;
+<SPAN class="LineNumber">  216   </SPAN>
+<SPAN class="LineNumber">  217   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* __SIMSTRUC_TYPES_H__ */</SPAN>
+<SPAN class="LineNumber">  218   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* __RTWTYPES_H__ */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>

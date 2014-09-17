@@ -1,0 +1,329 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - PHAT.h </TITLE>
+<STYLE> .LineNumber { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .Comment { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PreProcessor { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .Keyword { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .Datatype { font-style: bold;   color: #112266 } </STYLE>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT=#1122aa>
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/PHAT_ert_rtw/PHAT.h" TARGET="rtwreport_document_frame">/Users/cameraman/Desktop/cameraman/mac/MaxAudioLocalizer/MaxMSP_UB_SDK/evans-externs/controller/PHAT_ert_rtw/PHAT.h</A></H4>
+<PRE>
+<SPAN class="LineNumber">    1   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">    2   </SPAN> * File: PHAT.h
+<SPAN class="LineNumber">    3   </SPAN> *
+<SPAN class="LineNumber">    4   </SPAN> * Real-Time Workshop code generated for Simulink model PHAT.
+<SPAN class="LineNumber">    5   </SPAN> *
+<SPAN class="LineNumber">    6   </SPAN> * Model version                        : 1.73
+<SPAN class="LineNumber">    7   </SPAN> * Real-Time Workshop file version      : 6.5  (R2006b Beta)  21-Sep-2006
+<SPAN class="LineNumber">    8   </SPAN> * Real-Time Workshop file generated on : Mon Jul 28 11:30:25 2008
+<SPAN class="LineNumber">    9   </SPAN> * TLC version                          : 6.5 (Sep 20 2006)
+<SPAN class="LineNumber">   10   </SPAN> * C source code generated on           : Mon Jul 28 11:30:26 2008
+<SPAN class="LineNumber">   11   </SPAN> */</SPAN>
+<SPAN class="LineNumber">   12   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _RTW_HEADER_PHAT_h_
+<SPAN class="LineNumber">   13   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">define</SPAN> _RTW_HEADER_PHAT_h_
+<SPAN class="LineNumber">   14   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> _PHAT_COMMON_INCLUDES_
+<SPAN class="LineNumber">   15   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> _PHAT_COMMON_INCLUDES_
+<SPAN class="LineNumber">   16   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;math.h&gt;</FONT>
+<SPAN class="LineNumber">   17   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&lt;stddef.h&gt;</FONT>
+<SPAN class="LineNumber">   18   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;rtwtypes.h&quot;</FONT>
+<SPAN class="LineNumber">   19   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;rtlibsrc.h&quot;</FONT>
+<SPAN class="LineNumber">   20   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _PHAT_COMMON_INCLUDES_ */</SPAN>
+<SPAN class="LineNumber">   21   </SPAN>
+<SPAN class="LineNumber">   22   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">include</SPAN> <FONT COLOR=#992211>&quot;PHAT_types.h&quot;</FONT>
+<SPAN class="LineNumber">   23   </SPAN>
+<SPAN class="LineNumber">   24   </SPAN><SPAN class="Comment">/* Macros for accessing real-time model data structure */</SPAN>
+<SPAN class="LineNumber">   25   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmGetErrorStatus
+<SPAN class="LineNumber">   26   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmGetErrorStatus(rtm)        ((rtm)-&gt;</FONT>errorStatus)
+<SPAN class="LineNumber">   27   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   28   </SPAN>
+<SPAN class="LineNumber">   29   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">ifndef</SPAN> rtmSetErrorStatus
+<SPAN class="LineNumber">   30   </SPAN><FONT COLOR=#992211>#</FONT> <SPAN class="PreProcessor">define</SPAN> rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;</FONT>errorStatus = (val))
+<SPAN class="LineNumber">   31   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>
+<SPAN class="LineNumber">   32   </SPAN>
+<SPAN class="LineNumber">   33   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">   34   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   35   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT[2048];                 <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   36   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT1[2048];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT1;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   37   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT3[2048];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT3;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   38   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT4[2048];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT4;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   39   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT5[2048];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT5;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   40   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> MathFunction1[2048];       <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   41   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> FFT2[2048];                <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT2;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   42   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> MathFunction2[2048];       <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   43   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> MathFunction3[2048];       <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   44   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> MathFunction4[2048];       <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   45   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> MathFunction5[2048];       <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   46   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> Divide20[2048];            <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Divide20;"><FONT COLOR=#117755><I>&lt;Root&gt;/Divide20</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   47   </SPAN>  <A HREF=rtwtypes_h.html#type_creal32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">creal32_T</FONT></A> Assignment22[2048];        <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Assignment22;"><FONT COLOR=#117755><I>&lt;Root&gt;/Assignment22</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   48   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> MathFunction6[2048];        <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Math#-SP-#Function6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Math Function6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   49   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT20[2048];               <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT20;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT20</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   50   </SPAN><B>}</B> <A NAME=type_BlockIO_PHAT>BlockIO_PHAT</A>;
+<SPAN class="LineNumber">   51   </SPAN>
+<SPAN class="LineNumber">   52   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   53   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   54   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel1[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 1</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   55   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel2[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 2</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   56   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel3[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 3</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   57   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel4[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 4</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   58   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel5[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 5</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   59   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel6[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 6</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   60   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Channel7[1600];             <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Channel#-SP-#7;"><FONT COLOR=#117755><I>&lt;Root&gt;/Channel 7</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   61   </SPAN><B>}</B> <A NAME=type_ExternalInputs_PHAT>ExternalInputs_PHAT</A>;
+<SPAN class="LineNumber">   62   </SPAN>
+<SPAN class="LineNumber">   63   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">   64   </SPAN><SPAN class="Keyword">typedef</SPAN> <SPAN class="Keyword">struct</SPAN> <B>{</B>
+<SPAN class="LineNumber">   65   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R12[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R12;"><FONT COLOR=#117755><I>&lt;Root&gt;/R12</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   66   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R13[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R13;"><FONT COLOR=#117755><I>&lt;Root&gt;/R13</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   67   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R14[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R14;"><FONT COLOR=#117755><I>&lt;Root&gt;/R14</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   68   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R15[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R15;"><FONT COLOR=#117755><I>&lt;Root&gt;/R15</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   69   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R16[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R16;"><FONT COLOR=#117755><I>&lt;Root&gt;/R16</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   70   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R17[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R17;"><FONT COLOR=#117755><I>&lt;Root&gt;/R17</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   71   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R23[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R23;"><FONT COLOR=#117755><I>&lt;Root&gt;/R23</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   72   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R24[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R24;"><FONT COLOR=#117755><I>&lt;Root&gt;/R24</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   73   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R25[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R25;"><FONT COLOR=#117755><I>&lt;Root&gt;/R25</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   74   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R26[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R26;"><FONT COLOR=#117755><I>&lt;Root&gt;/R26</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   75   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R27[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R27;"><FONT COLOR=#117755><I>&lt;Root&gt;/R27</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   76   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R34[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R34;"><FONT COLOR=#117755><I>&lt;Root&gt;/R34</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   77   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R35[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R35;"><FONT COLOR=#117755><I>&lt;Root&gt;/R35</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   78   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R36[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R36;"><FONT COLOR=#117755><I>&lt;Root&gt;/R36</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   79   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R37[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R37;"><FONT COLOR=#117755><I>&lt;Root&gt;/R37</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   80   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R45[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R45;"><FONT COLOR=#117755><I>&lt;Root&gt;/R45</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   81   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R46[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R46;"><FONT COLOR=#117755><I>&lt;Root&gt;/R46</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   82   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R47[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R47;"><FONT COLOR=#117755><I>&lt;Root&gt;/R47</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   83   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R56[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R56;"><FONT COLOR=#117755><I>&lt;Root&gt;/R56</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   84   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R57[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R57;"><FONT COLOR=#117755><I>&lt;Root&gt;/R57</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   85   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> R67[1001];                  <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/R67;"><FONT COLOR=#117755><I>&lt;Root&gt;/R67</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   86   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Energy;                     <SPAN class="Comment">/* '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Energy;"><FONT COLOR=#117755><I>&lt;Root&gt;/Energy</I></FONT></a>' */</SPAN>
+<SPAN class="LineNumber">   87   </SPAN><B>}</B> <A NAME=type_ExternalOutputs_PHAT>ExternalOutputs_PHAT</A>;
+<SPAN class="LineNumber">   88   </SPAN>
+<SPAN class="LineNumber">   89   </SPAN><SPAN class="Comment">/* Parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">   90   </SPAN><SPAN class="Keyword">struct</SPAN> <A HREF=PHAT_types_h.html#type_Parameters_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Parameters_PHAT</FONT></A> <B>{</B>
+<SPAN class="LineNumber">   91   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad_PadValue;           <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">   92   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad</I></FONT></a>'
+<SPAN class="LineNumber">   93   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">   94   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT_TwiddleTable[1536];     <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">   95   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT</I></FONT></a>'
+<SPAN class="LineNumber">   96   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">   97   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad1_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">   98   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad1</I></FONT></a>'
+<SPAN class="LineNumber">   99   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  100   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT1_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  101   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT1;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT1</I></FONT></a>'
+<SPAN class="LineNumber">  102   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  103   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant7_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  104   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant7;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant7</I></FONT></a>'
+<SPAN class="LineNumber">  105   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  106   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  107   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT</I></FONT></a>'
+<SPAN class="LineNumber">  108   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  109   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad2_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">  110   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad2</I></FONT></a>'
+<SPAN class="LineNumber">  111   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  112   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT2_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  113   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT2;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT2</I></FONT></a>'
+<SPAN class="LineNumber">  114   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  115   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant1_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  116   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant1;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant1</I></FONT></a>'
+<SPAN class="LineNumber">  117   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  118   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT1_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  119   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT1;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT1</I></FONT></a>'
+<SPAN class="LineNumber">  120   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  121   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad3_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">  122   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad3</I></FONT></a>'
+<SPAN class="LineNumber">  123   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  124   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT3_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  125   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT3;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT3</I></FONT></a>'
+<SPAN class="LineNumber">  126   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  127   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant2_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  128   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant2;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant2</I></FONT></a>'
+<SPAN class="LineNumber">  129   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  130   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT2_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  131   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT2;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT2</I></FONT></a>'
+<SPAN class="LineNumber">  132   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  133   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad4_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">  134   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad4</I></FONT></a>'
+<SPAN class="LineNumber">  135   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  136   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT4_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  137   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT4;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT4</I></FONT></a>'
+<SPAN class="LineNumber">  138   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  139   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant3_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  140   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant3;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant3</I></FONT></a>'
+<SPAN class="LineNumber">  141   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  142   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT3_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  143   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT3;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT3</I></FONT></a>'
+<SPAN class="LineNumber">  144   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  145   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad5_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">  146   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad5</I></FONT></a>'
+<SPAN class="LineNumber">  147   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  148   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT5_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  149   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT5;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT5</I></FONT></a>'
+<SPAN class="LineNumber">  150   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  151   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant4_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  152   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant4;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant4</I></FONT></a>'
+<SPAN class="LineNumber">  153   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  154   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT4_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  155   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT4;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT4</I></FONT></a>'
+<SPAN class="LineNumber">  156   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  157   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> ZeroPad6_PadValue;          <SPAN class="Comment">/* Computed Parameter: PadValue
+<SPAN class="LineNumber">  158   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Zero#-SP-#Pad6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Zero Pad6</I></FONT></a>'
+<SPAN class="LineNumber">  159   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  160   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> FFT6_TwiddleTable[1536];    <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  161   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/FFT6;"><FONT COLOR=#117755><I>&lt;Root&gt;/FFT6</I></FONT></a>'
+<SPAN class="LineNumber">  162   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  163   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant5_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  164   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant5;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant5</I></FONT></a>'
+<SPAN class="LineNumber">  165   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  166   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT5_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  167   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT5;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT5</I></FONT></a>'
+<SPAN class="LineNumber">  168   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  169   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant6_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  170   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant6;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant6</I></FONT></a>'
+<SPAN class="LineNumber">  171   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  172   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT6_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  173   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT6;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT6</I></FONT></a>'
+<SPAN class="LineNumber">  174   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  175   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant8_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  176   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant8;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant8</I></FONT></a>'
+<SPAN class="LineNumber">  177   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  178   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT7_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  179   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT7;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT7</I></FONT></a>'
+<SPAN class="LineNumber">  180   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  181   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant9_Value;            <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  182   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant9;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant9</I></FONT></a>'
+<SPAN class="LineNumber">  183   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  184   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT8_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  185   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT8;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT8</I></FONT></a>'
+<SPAN class="LineNumber">  186   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  187   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant10_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  188   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant10;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant10</I></FONT></a>'
+<SPAN class="LineNumber">  189   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  190   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT9_TwiddleTable[1536];   <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  191   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT9;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT9</I></FONT></a>'
+<SPAN class="LineNumber">  192   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  193   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant11_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  194   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant11;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant11</I></FONT></a>'
+<SPAN class="LineNumber">  195   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  196   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT10_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  197   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT10;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT10</I></FONT></a>'
+<SPAN class="LineNumber">  198   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  199   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant12_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  200   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant12;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant12</I></FONT></a>'
+<SPAN class="LineNumber">  201   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  202   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT11_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  203   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT11;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT11</I></FONT></a>'
+<SPAN class="LineNumber">  204   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  205   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant13_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  206   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant13;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant13</I></FONT></a>'
+<SPAN class="LineNumber">  207   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  208   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT12_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  209   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT12;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT12</I></FONT></a>'
+<SPAN class="LineNumber">  210   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  211   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant14_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  212   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant14;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant14</I></FONT></a>'
+<SPAN class="LineNumber">  213   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  214   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT13_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  215   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT13;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT13</I></FONT></a>'
+<SPAN class="LineNumber">  216   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  217   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant15_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  218   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant15;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant15</I></FONT></a>'
+<SPAN class="LineNumber">  219   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  220   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT14_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  221   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT14;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT14</I></FONT></a>'
+<SPAN class="LineNumber">  222   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  223   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant16_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  224   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant16;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant16</I></FONT></a>'
+<SPAN class="LineNumber">  225   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  226   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT15_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  227   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT15;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT15</I></FONT></a>'
+<SPAN class="LineNumber">  228   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  229   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant17_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  230   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant17;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant17</I></FONT></a>'
+<SPAN class="LineNumber">  231   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  232   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT16_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  233   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT16;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT16</I></FONT></a>'
+<SPAN class="LineNumber">  234   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  235   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant18_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  236   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant18;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant18</I></FONT></a>'
+<SPAN class="LineNumber">  237   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  238   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT17_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  239   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT17;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT17</I></FONT></a>'
+<SPAN class="LineNumber">  240   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  241   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant19_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  242   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant19;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant19</I></FONT></a>'
+<SPAN class="LineNumber">  243   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  244   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT18_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  245   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT18;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT18</I></FONT></a>'
+<SPAN class="LineNumber">  246   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  247   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant20_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  248   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant20;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant20</I></FONT></a>'
+<SPAN class="LineNumber">  249   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  250   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT19_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  251   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT19;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT19</I></FONT></a>'
+<SPAN class="LineNumber">  252   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  253   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant21_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  254   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant21;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant21</I></FONT></a>'
+<SPAN class="LineNumber">  255   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  256   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> IFFT20_TwiddleTable[1536];  <SPAN class="Comment">/* Computed Parameter: TwiddleTable
+<SPAN class="LineNumber">  257   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/IFFT20;"><FONT COLOR=#117755><I>&lt;Root&gt;/IFFT20</I></FONT></a>'
+<SPAN class="LineNumber">  258   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  259   </SPAN>  <A HREF=rtwtypes_h.html#type_real32_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">real32_T</FONT></A> Constant22_Value;           <SPAN class="Comment">/* Computed Parameter: Value
+<SPAN class="LineNumber">  260   </SPAN>                                        * '<a href="matlab: rtwprivate rtwctags_hilite PHAT/Constant22;"><FONT COLOR=#117755><I>&lt;Root&gt;/Constant22</I></FONT></a>'
+<SPAN class="LineNumber">  261   </SPAN>                                        */</SPAN>
+<SPAN class="LineNumber">  262   </SPAN><B>}</B>;
+<SPAN class="LineNumber">  263   </SPAN>
+<SPAN class="LineNumber">  264   </SPAN><SPAN class="Comment">/* Real-time Model Data Structure */</SPAN>
+<SPAN class="LineNumber">  265   </SPAN><SPAN class="Keyword">struct</SPAN> <A HREF=PHAT_types_h.html#type_RT_MODEL_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_PHAT</FONT></A> <B>{</B>
+<SPAN class="LineNumber">  266   </SPAN>  <SPAN class="Datatype">const</SPAN> <A HREF=rtwtypes_h.html#type_char_T TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">char_T</FONT></A> * <SPAN class="Datatype">volatile</SPAN> errorStatus;
+<SPAN class="LineNumber">  267   </SPAN><B>}</B>;
+<SPAN class="LineNumber">  268   </SPAN>
+<SPAN class="LineNumber">  269   </SPAN><SPAN class="Comment">/* Block parameters (auto storage) */</SPAN>
+<SPAN class="LineNumber">  270   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=PHAT_types_h.html#type_Parameters_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">Parameters_PHAT</FONT></A> PHAT_P;
+<SPAN class="LineNumber">  271   </SPAN>
+<SPAN class="LineNumber">  272   </SPAN><SPAN class="Comment">/* Block signals (auto storage) */</SPAN>
+<SPAN class="LineNumber">  273   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=PHAT_h.html#type_BlockIO_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_PHAT</FONT></A> PHAT_B;
+<SPAN class="LineNumber">  274   </SPAN>
+<SPAN class="LineNumber">  275   </SPAN><SPAN class="Comment">/* External inputs (root inport signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  276   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=PHAT_h.html#type_ExternalInputs_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalInputs_PHAT</FONT></A> PHAT_U;
+<SPAN class="LineNumber">  277   </SPAN>
+<SPAN class="LineNumber">  278   </SPAN><SPAN class="Comment">/* External outputs (root outports fed by signals with auto storage) */</SPAN>
+<SPAN class="LineNumber">  279   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=PHAT_h.html#type_ExternalOutputs_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">ExternalOutputs_PHAT</FONT></A> PHAT_Y;
+<SPAN class="LineNumber">  280   </SPAN>
+<SPAN class="LineNumber">  281   </SPAN><SPAN class="Comment">/* Model entry point functions */</SPAN>
+<SPAN class="LineNumber">  282   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=PHAT_c.html#fcn_PHAT_initialize TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">PHAT_initialize</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  283   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=PHAT_c.html#fcn_PHAT_step TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">PHAT_step</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  284   </SPAN><SPAN class="Datatype">extern</SPAN> <SPAN class="Datatype">void</SPAN> <A HREF=PHAT_c.html#fcn_PHAT_terminate TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">PHAT_terminate</FONT></A>(<SPAN class="Datatype">void</SPAN>);
+<SPAN class="LineNumber">  285   </SPAN>
+<SPAN class="LineNumber">  286   </SPAN><SPAN class="Comment">/* Real-time Model object */</SPAN>
+<SPAN class="LineNumber">  287   </SPAN><SPAN class="Datatype">extern</SPAN> <A HREF=PHAT_types_h.html#type_RT_MODEL_PHAT TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">RT_MODEL_PHAT</FONT></A> *PHAT_M;
+<SPAN class="LineNumber">  288   </SPAN>
+<SPAN class="LineNumber">  289   </SPAN><SPAN class="Comment">/*
+<SPAN class="LineNumber">  290   </SPAN> * The generated code includes comments that allow you to trace directly
+<SPAN class="LineNumber">  291   </SPAN> * back to the appropriate location in the model.  The basic format
+<SPAN class="LineNumber">  292   </SPAN> * is &lt;system&gt;/block_name, where system is the system number (uniquely
+<SPAN class="LineNumber">  293   </SPAN> * assigned by Simulink) and block_name is the name of the block.
+<SPAN class="LineNumber">  294   </SPAN> *
+<SPAN class="LineNumber">  295   </SPAN> * Use the MATLAB hilite_system command to trace the generated code back
+<SPAN class="LineNumber">  296   </SPAN> * to the model.  For example,
+<SPAN class="LineNumber">  297   </SPAN> *
+<SPAN class="LineNumber">  298   </SPAN> * hilite_system('&lt;S3&gt;')    - opens system 3
+<SPAN class="LineNumber">  299   </SPAN> * hilite_system('&lt;S3&gt;/Kp') - opens and selects block Kp which resides in S3
+<SPAN class="LineNumber">  300   </SPAN> *
+<SPAN class="LineNumber">  301   </SPAN> * Here is the system hierarchy for this model
+<SPAN class="LineNumber">  302   </SPAN> *
+<SPAN class="LineNumber">  303   </SPAN> * '<a href="matlab: rtwprivate rtwctags_hilite PHAT;"><FONT COLOR=#117755><I>&lt;Root&gt;</I></FONT></a>' : PHAT
+<SPAN class="LineNumber">  304   </SPAN> */</SPAN>
+<SPAN class="LineNumber">  305   </SPAN><FONT COLOR=#992211>#</FONT><SPAN class="PreProcessor">endif</SPAN>                                 <SPAN class="Comment">/* _RTW_HEADER_PHAT_h_ */</SPAN>
+<SPAN class="LineNumber">  306   </SPAN>
+<SPAN class="LineNumber">  307   </SPAN><SPAN class="Comment">/* File trailer for Real-Time Workshop generated code.
+<SPAN class="LineNumber">  308   </SPAN> *
+<SPAN class="LineNumber">  309   </SPAN> * [EOF]
+<SPAN class="LineNumber">  310   </SPAN> */</SPAN>
+</PRE>
+</TD></TR></TABLE>
+<P>
+</BODY>
+</HTML>
