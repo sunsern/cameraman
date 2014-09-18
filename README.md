@@ -1,9 +1,9 @@
-Overview
-=========
+The Automatic Cameraman
+=======================
 Our implementation of The Automatic Cameraman (TAC) has 3 main components: 
-1. audio-localizer (C++) 
-2. face-localizer (Java) 
-3. MaxMSP interfaces (Max patches) 
+ 1. audio-localizer (C++) 
+ 2. face-localizer (Java) 
+ 3. MaxMSP interfaces (Max patches) 
 
 Requirements
 ============
